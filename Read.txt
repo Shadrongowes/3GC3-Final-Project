@@ -1,0 +1,19 @@
+
+		
+
+			Calendar c = Calendar.getInstance();
+	    	System.out.println("Current time => " + c.getTime());
+
+	    	SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+	    	String formattedDate = df.format(c.getTime());
+	    	   String a;
+	    	   String b;
+			a = formattedDate.substring(9, 10);
+			
+			
+			b= patientInfo[11].substring(9, 10);
+			
+			if("11".equals("11")){
+				   Toast.makeText(getApplicationContext(), "Get Your Tetanus",
+					          Toast.LENGTH_LONG).show();
+			}

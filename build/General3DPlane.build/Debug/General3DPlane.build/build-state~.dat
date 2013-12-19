@@ -1,0 +1,316 @@
+TGeneral3DPlane
+v6
+r1
+cCheck dependencies
+cCompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/Jason/Documents/Developer/General3DPlane/build/Debug/General3DPlane normal x86_64
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+c000000005281897500000000000000AA
+t1384221045
+s170
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/SDKSettings.plist
+c0000000052689EA6000000000000044C
+t1382588070
+s1100
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/CoreServices/SystemVersion.plist
+c0000000052689EA600000000000001DB
+t1382588070
+s475
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/GLUT
+c0000000052689EA800000000000135D4
+t1382588072
+s79316
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/OpenGL
+c0000000052689EA9000000000000BB7C
+t1382588073
+s47996
+
+N/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp
+c00000000528142DC00000000000007D7
+t1384202972
+s2007
+
+N/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp
+c00000000528154470000000000004ABA
+t1384207431
+s19130
+
+N/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp
+c00000000527C3943000000000000029C
+t1383872835
+s668
+
+N/Users/Jason/Documents/Developer/General3DPlane/build/Debug/General3DPlane
+t2
+s0
+
+N/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o
+t1385580827
+s12752
+
+N/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o
+t1385580827
+s108872
+
+N/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/General3DPlane.LinkFileList
+c000000005296491B0000000000000199
+t1385580827
+s409
+
+N/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o
+t1385580827
+s6452
+
+CBuild AST from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp
+r0
+
+CBuild AST from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp
+r0
+
+CBuild AST from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp
+r0
+
+CBuild AST from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/main.c
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies4aec369b8046b841^bb9d399b8046b841^---0#1#1#--18"Check dependencies36"24BF995A-809B-426F-B778-835F830DCB5B-
+
+CCompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s407273627.225551
+e407273627.672412
+r1
+xCompileC
+xbuild/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o
+x/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection84"Compile /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp187"CompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o General3DPlane/3DMathLib.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilercfda399b8046b841^3123ac9b8046b841^---0#0#1#-19%DVTDocumentLocation2@83"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp0000000000000000^2979"CompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o General3DPlane/3DMathLib.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Jason/Documents/Developer/General3DPlane    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-generated-files.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-own-target-headers.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-all-target-headers.hmap -iquote /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-project-headers.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/DerivedSources/x86_64 -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/DerivedSources -F/Users/Jason/Documents/Developer/General3DPlane/build/Debug -MMD -MT dependencies -MF /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.d --serialize-diagnostics /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.dia -c /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp -o /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o36"5F8545E0-D952-47D5-83B3-67CD89E93C95-
+b8EF45CCE-5053-45A6-A9A8-988F6A4367D5
+
+CCompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s407273627.226099
+e407273627.938485
+r1
+xCompileC
+xbuild/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o
+x/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.h
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.h
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:259:5: warning: 'glutPostRedisplay' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o    glutPostRedisplay();
+o    ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' declared here
+oextern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:469:2: warning: 'gluPerspective' is deprecated: first deprecated in OS X 10.9 - "Use GLKMatrix4MakePerspective" [-Wdeprecated-declarations]
+o        gluPerspective(45, 1, 1, 500);
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+oIn file included from /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:61:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:278:13: note: 'gluPerspective' declared here
+oextern void gluPerspective (GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar) OPENGL_DEPRECATED_MSG(10_0, 10_9, "Use GLKMatrix4MakePerspective");
+o            ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:637:2: warning: 'gluLookAt' is deprecated: first deprecated in OS X 10.9 - "Use GLKMatrix4MakeLookAt" [-Wdeprecated-declarations]
+o        gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+oIn file included from /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:61:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:265:13: note: 'gluLookAt' declared here
+oextern void gluLookAt (GLdouble eyeX, GLdouble eyeY, GLdouble eyeZ, GLdouble centerX, GLdouble centerY, GLdouble centerZ, GLdouble upX, GLdouble upY, GLdouble upZ) OPENGL_DEPRECATED_MSG(10_0, 10_9, "Use GLKMatrix4MakeLookAt");
+o            ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:642:5: warning: 'glutKeyboardFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o    glutKeyboardFunc(keyboard);
+o    ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:507:22: note: 'glutKeyboardFunc' declared here
+oextern void APIENTRY glutKeyboardFunc(void (*func)(unsigned char key, int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:740:13: warning: 'glutSolidCube' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o            glutSolidCube(particles[i].size+0.7);
+o            ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:575:22: note: 'glutSolidCube' declared here
+oextern void APIENTRY glutSolidCube(GLdouble size) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:747:13: warning: 'glutSolidSphere' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o            glutSolidSphere(particles[i].size,20,20);
+o            ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:571:22: note: 'glutSolidSphere' declared here
+oextern void APIENTRY glutSolidSphere(GLdouble radius, GLint slices, GLint stacks) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:760:2: warning: 'glutSwapBuffers' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o        glutSwapBuffers();
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:448:22: note: 'glutSwapBuffers' declared here
+oextern void APIENTRY glutSwapBuffers(void) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:761:5: warning: 'glutTimerFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o    glutTimerFunc(5,timer,0);
+o    ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:514:22: note: 'glutTimerFunc' declared here
+oextern void APIENTRY glutTimerFunc(unsigned int millis, void (*func)(int value), int value) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:828:5: warning: 'glutInit' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o    glutInit(&argc, argv);              //starts up GLUT
+o    ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:431:22: note: 'glutInit' declared here
+oextern void APIENTRY glutInit(int *argcp, char **argv) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:830:2: warning: 'glutInitDisplayMode' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o        glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:432:22: note: 'glutInitDisplayMode' declared here
+oextern void APIENTRY glutInitDisplayMode(unsigned int mode) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:833:2: warning: 'glutInitWindowSize' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o        glutInitWindowSize(800, 800);
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:437:22: note: 'glutInitWindowSize' declared here
+oextern void APIENTRY glutInitWindowSize(int width, int height) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:834:2: warning: 'glutInitWindowPosition' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o        glutInitWindowPosition(100, 100);
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:436:22: note: 'glutInitWindowPosition' declared here
+oextern void APIENTRY glutInitWindowPosition(int x, int y) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:837:2: warning: 'glutCreateWindow' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o        glutCreateWindow("Beware of the Bombs");        //creates the window
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:441:21: note: 'glutCreateWindow' declared here
+oextern int APIENTRY glutCreateWindow(const char *title) OPENGL_DEPRECATED(10_0, 10_9);
+o                    ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:839:5: warning: 'glutSpecialFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o    glutSpecialFunc(special);
+o    ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:517:22: note: 'glutSpecialFunc' declared here
+oextern void APIENTRY glutSpecialFunc(void (*func)(int key, int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:842:2: warning: 'glutDisplayFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o        glutDisplayFunc(display);       //registers "display" as the display callback function
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:505:22: note: 'glutDisplayFunc' declared here
+oextern void APIENTRY glutDisplayFunc(void (*func)(void)) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:845:5: warning: 'glutIdleFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o    glutIdleFunc(idle);
+o    ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:513:22: note: 'glutIdleFunc' declared here
+oextern void APIENTRY glutIdleFunc(void (*func)(void)) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:851:2: warning: 'glutMainLoop' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]
+o        glutMainLoop();                         //starts the event loop
+o        ^
+oIn file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:
+o/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:438:22: note: 'glutMainLoop' declared here
+oextern void APIENTRY glutMainLoop(void) OPENGL_DEPRECATED(10_0, 10_9);
+o                     ^
+o/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:826:11: warning: implicit conversion loses integer precision: 'time_t' (aka 'long') to 'unsigned int' [-Wshorten-64-to-32]
+o    srand(time(0));
+o    ~~~~~ ^~~~~~~
+o18 warnings generated.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Compile /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp191"CompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o General3DPlane/Assignment2.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler6af5399b8046b841^4641f09b8046b841^-12142"/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:259:5: warning: 'glutPostRedisplay' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]    glutPostRedisplay();    ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' declared hereextern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:469:2: warning: 'gluPerspective' is deprecated: first deprecated in OS X 10.9 - "Use GLKMatrix4MakePerspective" [-Wdeprecated-declarations]        gluPerspective(45, 1, 1, 500);        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:In file included from /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:61:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:278:13: note: 'gluPerspective' declared hereextern void gluPerspective (GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar) OPENGL_DEPRECATED_MSG(10_0, 10_9, "Use GLKMatrix4MakePerspective");            ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:637:2: warning: 'gluLookAt' is deprecated: first deprecated in OS X 10.9 - "Use GLKMatrix4MakeLookAt" [-Wdeprecated-declarations]        gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:In file included from /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:61:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:265:13: note: 'gluLookAt' declared hereextern void gluLookAt (GLdouble eyeX, GLdouble eyeY, GLdouble eyeZ, GLdouble centerX, GLdouble centerY, GLdouble centerZ, GLdouble upX, GLdouble upY, GLdouble upZ) OPENGL_DEPRECATED_MSG(10_0, 10_9, "Use GLKMatrix4MakeLookAt");            ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:642:5: warning: 'glutKeyboardFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]    glutKeyboardFunc(keyboard);    ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:507:22: note: 'glutKeyboardFunc' declared hereextern void APIENTRY glutKeyboardFunc(void (*func)(unsigned char key, int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:740:13: warning: 'glutSolidCube' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]            glutSolidCube(particles[i].size+0.7);            ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:575:22: note: 'glutSolidCube' declared hereextern void APIENTRY glutSolidCube(GLdouble size) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:747:13: warning: 'glutSolidSphere' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]            glutSolidSphere(particles[i].size,20,20);            ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:571:22: note: 'glutSolidSphere' declared hereextern void APIENTRY glutSolidSphere(GLdouble radius, GLint slices, GLint stacks) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:760:2: warning: 'glutSwapBuffers' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]        glutSwapBuffers();        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:448:22: note: 'glutSwapBuffers' declared hereextern void APIENTRY glutSwapBuffers(void) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:761:5: warning: 'glutTimerFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]    glutTimerFunc(5,timer,0);    ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:514:22: note: 'glutTimerFunc' declared hereextern void APIENTRY glutTimerFunc(unsigned int millis, void (*func)(int value), int value) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:828:5: warning: 'glutInit' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]    glutInit(&argc, argv);              //starts up GLUT    ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:431:22: note: 'glutInit' declared hereextern void APIENTRY glutInit(int *argcp, char **argv) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:830:2: warning: 'glutInitDisplayMode' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]        glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:432:22: note: 'glutInitDisplayMode' declared hereextern void APIENTRY glutInitDisplayMode(unsigned int mode) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:833:2: warning: 'glutInitWindowSize' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]        glutInitWindowSize(800, 800);        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:437:22: note: 'glutInitWindowSize' declared hereextern void APIENTRY glutInitWindowSize(int width, int height) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:834:2: warning: 'glutInitWindowPosition' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]        glutInitWindowPosition(100, 100);        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:436:22: note: 'glutInitWindowPosition' declared hereextern void APIENTRY glutInitWindowPosition(int x, int y) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:837:2: warning: 'glutCreateWindow' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]        glutCreateWindow("Beware of the Bombs");        //creates the window        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:441:21: note: 'glutCreateWindow' declared hereextern int APIENTRY glutCreateWindow(const char *title) OPENGL_DEPRECATED(10_0, 10_9);                    ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:839:5: warning: 'glutSpecialFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]    glutSpecialFunc(special);    ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:517:22: note: 'glutSpecialFunc' declared hereextern void APIENTRY glutSpecialFunc(void (*func)(int key, int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:842:2: warning: 'glutDisplayFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]        glutDisplayFunc(display);       //registers "display" as the display callback function        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:505:22: note: 'glutDisplayFunc' declared hereextern void APIENTRY glutDisplayFunc(void (*func)(void)) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:845:5: warning: 'glutIdleFunc' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]    glutIdleFunc(idle);    ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:513:22: note: 'glutIdleFunc' declared hereextern void APIENTRY glutIdleFunc(void (*func)(void)) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:851:2: warning: 'glutMainLoop' is deprecated: first deprecated in OS X 10.9 [-Wdeprecated-declarations]        glutMainLoop();                         //starts the event loop        ^In file included from /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:8:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:438:22: note: 'glutMainLoop' declared hereextern void APIENTRY glutMainLoop(void) OPENGL_DEPRECATED(10_0, 10_9);                     ^/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp:826:11: warning: implicit conversion loses integer precision: 'time_t' (aka 'long') to 'unsigned int' [-Wshorten-64-to-32]    srand(time(0));    ~~~~~ ^~~~~~~18 warnings generated.18(36%IDEClangDiagnosticActivityLogMessage2@64"'glutPostRedisplay' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@33"'glutPostRedisplay' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^443#21#443#21#13749#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^258#4#258#4#5724#0#12"Deprecations--2@95"'gluPerspective' is deprecated: first deprecated in OS X 10.9 - "Use GLKMatrix4MakePerspective"-407273627#18446744073709551615#0#1(2@30"'gluPerspective' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@162"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h0000000000000000^277#12#277#12#15841#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^468#1#468#1#10070#0#12"Deprecations--2@85"'gluLookAt' is deprecated: first deprecated in OS X 10.9 - "Use GLKMatrix4MakeLookAt"-407273627#18446744073709551615#0#1(2@25"'gluLookAt' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@162"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h0000000000000000^264#12#264#12#14161#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^636#1#636#1#14604#0#12"Deprecations--2@63"'glutKeyboardFunc' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@32"'glutKeyboardFunc' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^506#21#506#21#17667#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^641#4#641#4#14732#0#12"Deprecations--2@60"'glutSolidCube' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@29"'glutSolidCube' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^574#21#574#21#22615#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^739#12#739#12#17260#0#12"Deprecations--2@62"'glutSolidSphere' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@31"'glutSolidSphere' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^570#21#570#21#22171#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^746#12#746#12#17385#0#12"Deprecations--2@62"'glutSwapBuffers' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@31"'glutSwapBuffers' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^447#21#447#21#13979#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^759#1#759#1#17576#0#12"Deprecations--2@60"'glutTimerFunc' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@29"'glutTimerFunc' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^513#21#513#21#18369#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^760#4#760#4#17600#0#12"Deprecations--2@55"'glutInit' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@24"'glutInit' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^430#21#430#21#12845#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^827#4#827#4#18529#0#12"Deprecations--2@66"'glutInitDisplayMode' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@35"'glutInitDisplayMode' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^431#21#431#21#12931#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^829#1#829#1#18575#0#12"Deprecations--2@65"'glutInitWindowSize' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@34"'glutInitWindowSize' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^436#21#436#21#13273#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^832#1#832#1#18641#0#12"Deprecations--2@69"'glutInitWindowPosition' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@38"'glutInitWindowPosition' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^435#21#435#21#13184#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^833#1#833#1#18673#0#12"Deprecations--2@63"'glutCreateWindow' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@32"'glutCreateWindow' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^440#20#440#20#13465#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^836#1#836#1#18717#0#12"Deprecations--2@62"'glutSpecialFunc' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@31"'glutSpecialFunc' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^516#21#516#21#18615#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^838#4#838#4#18790#0#12"Deprecations--2@62"'glutDisplayFunc' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@31"'glutDisplayFunc' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^504#21#504#21#17474#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^841#1#841#1#18826#0#12"Deprecations--2@59"'glutIdleFunc' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@28"'glutIdleFunc' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^512#21#512#21#18284#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^844#4#844#4#18917#0#12"Deprecations--2@59"'glutMainLoop' is deprecated: first deprecated in OS X 10.9-407273627#18446744073709551615#0#1(2@28"'glutMainLoop' declared here-407273627#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@161"file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h0000000000000000^437#21#437#21#13367#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^850#1#850#1#19009#0#12"Deprecations--2@84"Implicit conversion loses integer precision: 'time_t' (aka 'long') to 'unsigned int'-407273627#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^825#10#825#10#18508#0#22"Value Conversion Issue2(3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^825#10#825#17#18508#6#3@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^825#4#825#9#18502#0#-0#0#1#-19%DVTDocumentLocation4@85"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp0000000000000000^2991"CompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o General3DPlane/Assignment2.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Jason/Documents/Developer/General3DPlane    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-generated-files.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-own-target-headers.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-all-target-headers.hmap -iquote /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-project-headers.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/DerivedSources/x86_64 -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/DerivedSources -F/Users/Jason/Documents/Developer/General3DPlane/build/Debug -MMD -MT dependencies -MF /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.d --serialize-diagnostics /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.dia -c /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Assignment2.cpp -o /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o36"12D76F9B-6B27-4C1A-89C0-D33270FB19F7-
+b8EF45CCE-5053-45A6-A9A8-988F6A4367D5
+
+CCompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s407273627.225776
+e407273627.798738
+r1
+xCompileC
+xbuild/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o
+x/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.h
+d/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Compile /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp185"CompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o General3DPlane/Particle.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilerc9e7399b8046b841^f27acc9b8046b841^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp0000000000000000^2973"CompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o General3DPlane/Particle.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Jason/Documents/Developer/General3DPlane    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-generated-files.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-own-target-headers.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-all-target-headers.hmap -iquote /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/General3DPlane-project-headers.hmap -I/Users/Jason/Documents/Developer/General3DPlane/build/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/DerivedSources/x86_64 -I/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/DerivedSources -F/Users/Jason/Documents/Developer/General3DPlane/build/Debug -MMD -MT dependencies -MF /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.d --serialize-diagnostics /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.dia -c /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/Particle.cpp -o /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o36"2237C149-26B3-4455-AD3E-57555432B528-
+b8EF45CCE-5053-45A6-A9A8-988F6A4367D5
+
+CCompileC build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/main.o /Users/Jason/Documents/Developer/General3DPlane/General3DPlane/main.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CLd /Users/Jason/Documents/Developer/General3DPlane/build/Debug/General3DPlane normal x86_64
+s407273627.939402
+e407273628.082339
+r1
+xLd
+x/Users/Jason/Documents/Developer/General3DPlane/build/Debug/General3DPlane
+xnormal
+xx86_64
+d/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/General3DPlane.LinkFileList
+d/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/3DMathLib.o
+d/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Particle.o
+d/Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/Assignment2.o
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/OpenGL
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLUT.framework/GLUT
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libc++.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.dylib
+d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.0/lib/darwin/libclang_rt.osx.a
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcache.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcommonCrypto.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcompiler_rt.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcopyfile.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcorecrypto.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdispatch.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdyld.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libkeymgr.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/liblaunch.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libmacho.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libquarantine.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libremovefile.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_asl.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_blocks.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_c.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_configuration.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_dnssd.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_info.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_kernel.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_m.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_malloc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_network.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_notify.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_platform.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_pthread.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_sandbox.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_stats.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunwind.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libxpc.dylib
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Link /Users/Jason/Documents/Developer/General3DPlane/build/Debug/General3DPlane43"Ld build/Debug/General3DPlane normal x86_64f888f09b8046b841^2316159c8046b841^---0#0#1#--994"Ld build/Debug/General3DPlane normal x86_64    cd /Users/Jason/Documents/Developer/General3DPlane    setenv MACOSX_DEPLOYMENT_TARGET 10.9    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Users/Jason/Documents/Developer/General3DPlane/build/Debug -F/Users/Jason/Documents/Developer/General3DPlane/build/Debug -filelist /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/General3DPlane.LinkFileList -mmacosx-version-min=10.9 -stdlib=libc++ -framework OpenGL -framework GLUT -Xlinker -dependency_info -Xlinker /Users/Jason/Documents/Developer/General3DPlane/build/General3DPlane.build/Debug/General3DPlane.build/Objects-normal/x86_64/General3DPlane_dependency_info.dat -o /Users/Jason/Documents/Developer/General3DPlane/build/Debug/General3DPlane36"1BC26932-1FFC-4BB3-ABB8-730DCBBD3248-
+b8EF45CCE-5053-45A6-A9A8-988F6A4367D5
+
