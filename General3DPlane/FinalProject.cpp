@@ -18,8 +18,9 @@
 #include <ctime>
 #include <time.h>
 #include <string.h>
-#include "wavefrontLoader.h"
-#include "Particle.h"
+#include <cmath>
+
+
 
 //Global Variables
 
@@ -47,13 +48,6 @@ float lasty=0.0;
 float carRotation = 0;
 float ypos = 0;
 float cRadius = 10.0f; // our radius distance from our character
-
-
-
-//particles List
-
-std::vector<particle> particles;
-
 
 
 
@@ -1233,6 +1227,15 @@ void gameCheck(){
     
     
 }
+
+//
+//void collision(){
+//    if((abs(myCar.location.x-cars[2].location.x)<=2 )&&(myCar.location.z-cars[2].location.z)<=2)){
+//        
+//    }
+//        
+//        }
+
 void display(void){
     
 if(carSelect){
@@ -1340,7 +1343,7 @@ if(carSelect){
        
         glPopMatrix();
         count++;
-        if (count>1600) {
+        if (count>200) {
             
             gameComplete = false;
             carSelect = true;
@@ -1410,6 +1413,7 @@ if(carSelect){
                 xrot = 370;
                 cars[i].selected = false;
                 cars[2].location.z = 30;
+                cars[2].location.x = -6;
             }
             
             
@@ -1440,6 +1444,7 @@ if(carSelect){
 
 	glutSwapBuffers();
     glutTimerFunc(5,timer,0);
+         printf("%f,\n%f",cars[2].location.z,myCar.location.z);
     }
     
     
@@ -1491,6 +1496,8 @@ int main(int argc, char** argv)
     
 	glEnable(GL_DEPTH_TEST);
     glEnable(GL_BACK);
+    
+   
   
 
 	    notesToTheTA();
