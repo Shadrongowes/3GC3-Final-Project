@@ -21,17 +21,30 @@
 #include <string.h>
 
 
+
+
 //Global Variables
 
 
 float camPos[] = {0, 10, 30};
 point3D origin(0,0,0);
 vec3D normalPlane(0,1,0);
+vec3D vel0(0,0,0);
 char itemToMake[]={'c','s','t','o','y'};
 char currentItem = 'c';
 int item = 1;
 bool carSelect = true;
 int carRotation = 0;
+float xpos = 0;
+float ypos = 0;
+float zpos = 0;
+float xrot = 0;
+float yrot = 0;
+float angle=0.0;
+float lastx=0.0;
+float lasty=0.0;
+
+float cRadius = 10.0f; // our radius distance from our character
 
 
 
@@ -249,7 +262,7 @@ boundingBox standardBox(){
 
 object createObject(){
     
-    object newObject(origin, currentItem, 1,1,1, 'b',standardBox(), true);
+    object newObject(origin, 0.0,vel0, 'b',standardBox(), true);
 
     
     return newObject;
@@ -359,40 +372,45 @@ object translateFunction(object vehicle,float x, float y, float z){
     
     
 }
-void scaleFunction(float x, float y, float z){
-    
-    for(int i = 0;i<cars.size();i++){
-        if(cars[i].selected){
-            
-             cars[i].scaleX = cars[i].scaleX+x;
-             cars[i].scaleY = cars[i].scaleY+y;
-             cars[i].scaleZ = cars[i].scaleZ+z;
-            
-            
-            
-            //shift all bounding boxes
-            //this is done by calculating the distance between the center of the object and the far edges
-            //This value is then multiplied by half the scaling factor to increase the bounding box size
-            
-            
-            cars[i].box.left.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.left.origin).scalarMultiply(1+x));
-            
-            cars[i].box.right.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.right.origin).scalarMultiply(1+x));
-            
-            cars[i].box.bottom.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.bottom.origin).scalarMultiply(1+y));
-            
-            cars[i].box.top.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.top.origin).scalarMultiply(1+y));
-            
-            cars[i].box.front.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.front.origin).scalarMultiply(1+z));
-            
-            cars[i].box.back.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.back.origin).scalarMultiply(1+z));
-            
-        
-        }
-    }
-    
-    
-}
+
+
+//Not used for cars because they dont scale...
+
+
+//void scaleFunction(float x, float y, float z){
+//    
+//    for(int i = 0;i<cars.size();i++){
+//        if(cars[i].selected){
+//            
+//             cars[i].scaleX = cars[i].scaleX+x;
+//             cars[i].scaleY = cars[i].scaleY+y;
+//             cars[i].scaleZ = cars[i].scaleZ+z;
+//            
+//            
+//            
+//            //shift all bounding boxes
+//            //this is done by calculating the distance between the center of the object and the far edges
+//            //This value is then multiplied by half the scaling factor to increase the bounding box size
+//            
+//            
+//            cars[i].box.left.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.left.origin).scalarMultiply(1+x));
+//            
+//            cars[i].box.right.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.right.origin).scalarMultiply(1+x));
+//            
+//            cars[i].box.bottom.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.bottom.origin).scalarMultiply(1+y));
+//            
+//            cars[i].box.top.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.top.origin).scalarMultiply(1+y));
+//            
+//            cars[i].box.front.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.front.origin).scalarMultiply(1+z));
+//            
+//            cars[i].box.back.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.back.origin).scalarMultiply(1+z));
+//            
+//        
+//        }
+//    }
+//    
+//    
+//}
 
 
 void rotationRunction(float x,float y, float z,float angle){
@@ -462,6 +480,19 @@ void drawStrokeText(char*string, int x, int y, int z)
 //-------------------------------------------------------------------------
 
 
+
+
+void reshape (int w, int h) {
+    glViewport (0, 0, (GLsizei)w, (GLsizei)h); //set the viewport
+    glMatrixMode (GL_PROJECTION); //set the matrix to projection
+    
+    glLoadIdentity ();
+    gluPerspective (60, (GLfloat)w / (GLfloat)h, 0.1, 100.0);
+    glMatrixMode (GL_MODELVIEW); //set the matrix back to model
+    
+}
+
+
 //All keyboard controls
 
 
@@ -470,120 +501,89 @@ void keyboard(unsigned char key, int x, int y)
     
     int mod  = glutGetModifiers();
 
-	if (key=='q' || key==27)
+	if ( key==27)
         {
 			exit (0);
             
         }
-			
-    if(key ==32){
-        if(item<5){
-        currentItem =itemToMake[item];
-            item++;}
-        else{
-            item = 0;
-        }
-        
+    if(key == '1'){
+        carSelect = false;
+        //carSelect=false;
         
     }
-    
-    //Generates a new object
-    
-    else if(key=='a'){
-            deselectAll();
-            object newObj = createObject();
-            cars.push_back(newObj);
-        }
-    else if(key=='x'){
-        
-        if(mod == GLUT_ACTIVE_ALT){
-           
+
+        if (key=='q')
+        {
+            xrot += 1;
+            if (xrot >360) xrot -= 360;
         }
         
-        else{
-          
+        if (key=='e')
+        {
+            xrot -= 1;
+            if (xrot < -360) xrot += 360;
         }
-    }
-        else if(key == 'y'){
-            
-            if(mod == GLUT_ACTIVE_ALT){
-              
-            }
-            
-            else{
-              
-            }
+        
+        if (key=='w')
+        {
+            float xrotrad, yrotrad;
+            yrotrad = (yrot / 180 * 3.141592654f);
+            xrotrad = (xrot / 180 * 3.141592654f);
+            xpos += float(sin(yrotrad));
+            zpos -= float(cos(yrotrad));
+            ypos -= float(sin(xrotrad));
+        }
+        
+        if (key=='s')
+        {
+            float xrotrad, yrotrad;
+            yrotrad = (yrot / 180 * 3.141592654f);
+            xrotrad = (xrot / 180 * 3.141592654f);
+            xpos -= float(sin(yrotrad));
+            zpos += float(cos(yrotrad));
+            ypos += float(sin(xrotrad));
+        }
+        
+        if (key=='d')
+        {
+            float yrotrad;
+            yrotrad = (yrot / 180 * 3.141592654f);
+            xpos += float(cos(yrotrad)) * 0.2;
+            zpos += float(sin(yrotrad)) * 0.2;
+        }
+        
+        if (key=='a')
+        {
+            float yrotrad;
+            yrotrad = (yrot / 180 * 3.141592654f);
+            xpos -= float(cos(yrotrad)) * 0.2;
+            zpos -= float(sin(yrotrad)) * 0.2;
         }
 
-        else if(key == 'z'){
-            
-            if(mod == GLUT_ACTIVE_ALT){
-                
-            }
-            
-            else{
-               
-            }
-        }
-        else if(key == 'i'){
-            
-            if(mod == GLUT_ACTIVE_ALT){
-                scaleFunction(-0.1, 0, 0);
-            }
-            
-            else{
-                scaleFunction(0.1, 0, 0);
-            }
-        }
-        else if(key == 'j'){
-            
-            if(mod == GLUT_ACTIVE_ALT){
-                scaleFunction(0, -0.1, 0);
-            }
-            
-            else{
-                scaleFunction(0, 0.1, 0);
-            }
-        }
-        else if(key == 'k'){
-            
-            if(mod == GLUT_ACTIVE_ALT){
-                scaleFunction(0, 0, -0.1);
-            }
-            
-            else{
-                scaleFunction(0, 0, 0.1);
-            }
-        }
-     else if(key == 'r'){
+     if(key == 'r'){
          while (cars.size()>0){
          reset();
         
          }
         }
-     else if(key == '1'){
-         currentMaterial = 'r';
-         carSelect = false;
-		 //carSelect=false;
-         
-     }
+    
     
      else if(key == '2'){
-         currentMaterial = 'w';
+       
          
      }
      else if(key == '3'){
          
-         currentMaterial ='g';
+        
      }
      else if(key == '4'){
-         currentMaterial ='b';
+         
          
          
      }
      else if(key == '5'){
          
-         currentMaterial = 'B';
+         
      }
      else if(key == '6'){
         light_pos1[0]=light_pos1[0]+5;
@@ -615,10 +615,25 @@ void keyboard(unsigned char key, int x, int y)
          light_pos1[2]=light_pos1[2]-5;
          light_pos[2]=light_pos[2]-5;
      }
+   
+    
 
 }
 
 
+
+
+
+// mouse movement for game
+
+void mouseMovement(int x, int y) {
+    int diffx=x-lastx;
+    int diffy=y-lasty; //check the difference between the
+    lastx=x; //set lastx to the current x position
+    lasty=y; //set lasty to the current y position
+    xrot += (float) diffy; //set the xrot to xrot with the addition
+    yrot += (float) diffx;    //set the xrot to yrot with the addition
+}
 
 
 
@@ -771,7 +786,12 @@ vec3D GetOGLPos(int x, int y)
 
 
 
-void moveCars(){}
+void moveCar(){
+    
+    cars[1].location = cars[1].location.shift(cars[1].speed);
+    translateFunction(cars[1], cars[1].speed.x, cars[1].speed.y, cars[1].speed.z);
+
+}
 
 
 
@@ -794,6 +814,7 @@ void special(int key, int x, int y)
             
 		case GLUT_KEY_UP:
 			camPos[2] -= 2.5;
+            
 			break;
             
 		case GLUT_KEY_DOWN:
@@ -1028,15 +1049,15 @@ void isSelected(){
 
 void createCars(){
     
-    object newObj(origin, currentItem, 1,1,1, 'b',standardBox(), false);
+    object newObj(origin, 0.0, vel0, 'r',standardBox(), false);
     cars.push_back(newObj);
     cars[0] = translateFunction(cars[0], -10, 0,0);
     
-    object newObj2(origin, currentItem, 1,1,1, 'b',standardBox(), false);
+    object newObj2(origin, 0.0, vel0, 'y',standardBox(), false);
     cars.push_back(newObj2);
    cars[1] = translateFunction(cars[1], 10, 0,0);
     
-    object newObj3(origin, currentItem, 1,1,1, 'b',standardBox(), false);
+    object newObj3(origin, 0.0, vel0, 'b',standardBox(), false);
     cars.push_back(newObj3);
   
 }
@@ -1044,17 +1065,18 @@ void createCars(){
 
 //The timerFunc is set to redisplay every 5ms
 void drawEnvironment(){
-    setMaterial('w');
+    
+    setMaterial('B');
     
     
     glBegin(GL_QUADS);
     
     glNormal3f(0, 1, 0); //set the normal for stage lighting
     
-    glVertex3f(500, -3, -500 );
-    glVertex3f(500, -3, 500 );
-    glVertex3f(-500,-3, 500 );
-    glVertex3f(-500, -3, -500 );
+    glVertex3f(500, 0, -500 );
+    glVertex3f(500, 0, 500 );
+    glVertex3f(-500,0, 500 );
+    glVertex3f(-500, 0, -500 );
     
     glEnd();
     glDisable(GL_TEXTURE_2D);
@@ -1097,7 +1119,8 @@ void drawEnvironment(){
 void display(void){
     
 if(carSelect){
-        
+
+    
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0, 0, 0, 0);
         //---------------------------------------------
@@ -1108,8 +1131,7 @@ if(carSelect){
         //-----------------------------------------------------------
         carRotation++;
         
-		glMatrixMode(GL_PROJECTION);
-		glTranslatef(0.0, 0.0, -12.0);
+		
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
@@ -1128,17 +1150,18 @@ if(carSelect){
             glPushMatrix();
             glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
             glRotatef(carRotation, 0, 1, 0);
+            setMaterial(cars[i].material);
             glutSolidCube(1);
             
             
             
             
             if(cars[i].selected){
-                glutWireCube(cars[i].scaleX*2);
+                glutWireCube(2);
                 
             }
             else{
-                setMaterial(cars[i].material);
+                
                 
             }
             glPopMatrix();
@@ -1159,127 +1182,53 @@ if(carSelect){
     }
     
     else{
+        
 
+       
+        
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0, 0, 0, 0);
 	//---------------------------------------------
 	
-
+        
+        moveCar();
 
     glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
+	gluLookAt(cars[1].location.x, cars[1].location.y+10, cars[1].location.z+30,cars[1].location.x, cars[1].location.y, cars[1].location.z, 0,1,0);
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
     glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
     
-<<<<<<< HEAD
-    drawEnvironment();
-    
-=======
-    drawRoom();
 
->>>>>>> c918de650bac302cd848e2a80980df941f7bedc3
+   
+      
+        
+    
+
     glutKeyboardFunc(keyboard);
-    
+   
     for(int i = 0; i<cars.size();i++){
+        
+        setMaterial('w');
+        glLoadIdentity();
+     
+        glTranslatef(0.0f, 0.0f, -cRadius);
+        glRotatef(xrot,1.0,0.0,0.0);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glutSolidCube(2); //Our character to follow
+        
+        glRotatef(yrot,0.0,1.0,0.0);
+        glTranslated(-xpos,0.0f,-zpos);
+        glRotatef(cars[1].direction, 0, 1, 0);
+        glMatrixMode(GL_MODELVIEW);
+        
+         drawEnvironment();
+        
+        
         glPushMatrix();
-        glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
-        glPushMatrix();
-        glScalef(cars[i].scaleX,cars[i].scaleY,cars[i].scaleZ);
-        
-            
-            
-            if(cars[i].selected){
-                setMaterial('w');
-                glutWireCube(cars[i].scaleX*2);
-                cars[i].shape = currentItem;
-                setMaterial(currentMaterial);
-                cars[i].material = currentMaterial;
-                
-            }
-            else{
-                setMaterial(cars[i].material);
-                
-            }
-        
-        
-        
-        
-       //Used to switch the current targets shape a switch command was used to be able to easily change
-    //Shapes
-        
-        
-        
-        if(cars[i].selected){
-            
-
-           
-            switch(currentItem)
-            {
-                case 'c':
-                    glutSolidCube(cars[i].scaleX);
-                    
-                    break;
-                    
-                case 's':
-                    glutSolidSphere(cars[i].scaleX/2,20,20);
-                    break;
-                    
-                case 't':
-                    glutSolidTeapot(cars[i].scaleX);
-                    break;
-                    
-                case 'o':
-                    glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
-                    break;
-                    
-                case 'y':
-                    glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
-                    
-                    break;
-                    
-                    
-            }
-            
-            
-        }
-        
-        else{
-        switch(cars[i].shape)
-        {
-            case 'c':
-                glutSolidCube(cars[i].scaleX);
-                break;
-                
-            case 's':
-                glutSolidSphere(cars[i].scaleX/2,20,20);
-                break;
-                
-            case 't':
-                glutSolidTeapot(cars[i].scaleX);
-                break;
-                
-            case 'o':
-                glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
-                break;
-                
-            case 'y':
-               glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
-                break;
-                
-
-        }
-            
-        }
-       
-        
-        
-        glPopMatrix();
-        glPopMatrix();
-    glPushMatrix();
 		glTranslatef(0.0, 5.0, -2.5);
 		drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
-	glPopMatrix();
+        glPopMatrix();
     }
     
 
@@ -1299,17 +1248,7 @@ if(carSelect){
 
 
 
-//-----------------------------------
-void reshape(int w, int h)
-{
-   glViewport(0, 0, (GLsizei) w, (GLsizei) h);
-   glMatrixMode(GL_PROJECTION);
-   glLoadIdentity();
-   gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 30.0);
-   glMatrixMode(GL_MODELVIEW);
-   glLoadIdentity();
-   glTranslatef(0.0, 0.0, -3.6);
-}
+
 //--------------------------------------------
 
 
@@ -1332,23 +1271,26 @@ int main(int argc, char** argv)
     glutSpecialFunc(special);
 
  
+    init();
 
     
     
     glutDisplayFunc(display);	//registers "display" as the display callback function
     
+    glutIdleFunc (display);
+    glutReshapeFunc (reshape);
     
+    glutPassiveMotionFunc(mouseMovement);
 	
 	
 
-    glutIdleFunc(idle);
+    glutIdleFunc(display);
     
 	glEnable(GL_DEPTH_TEST);
     glEnable(GL_BACK);
   
 
-	init();
-    notesToTheTA();
+	    notesToTheTA();
     
 	glutMainLoop();				//starts the event loop
     

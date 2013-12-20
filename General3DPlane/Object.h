@@ -18,12 +18,11 @@ class object
 {
     public:
         object();
-        object(point3D inPoint,char inShape,float xScale,float yScale,float zScale,char inMaterial,boundingBox inBoundingBox,bool isSelected);
-        float size;
+        object(point3D inPoint,float inDirection,vec3D inSpeed,char inMaterial,boundingBox inBoundingBox,bool isSelected);
+
         point3D location;
-    float scaleX;
-    float scaleY;
-    float scaleZ;
+        float direction;
+        vec3D speed;
         char material;
         char shape;
         boundingBox box;

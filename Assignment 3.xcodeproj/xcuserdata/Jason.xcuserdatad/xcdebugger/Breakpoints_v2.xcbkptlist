@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "General3DPlane/Assignment3.cpp"
-            timestampString = "409208943.244294"
+            timestampString = "409220796.410672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1157"
-            endingLineNumber = "1157"
+            startingLineNumber = "1180"
+            endingLineNumber = "1180"
             landmarkName = "display(void)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "General3DPlane/Assignment3.cpp"
-            timestampString = "409205869.06503"
+            timestampString = "409220649.217692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408">
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "clearcars(object object1,int i)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

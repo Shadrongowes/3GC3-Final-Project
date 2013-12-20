@@ -16,15 +16,13 @@ object::object(){
 /*The particle class was created to keep track of the attributes each particle has in the system
  */
 
-object::object(point3D inPoint,char inShape,float xScale,float yScale,float zScale,char inMaterial,boundingBox inBoundingBox,bool isSelected){
+object::object(point3D inPoint,float inDirection,vec3D inSpeed,char inMaterial,boundingBox inBoundingBox,bool isSelected){
     location = inPoint;
-    scaleX = xScale;
-    scaleY = yScale;
-    scaleZ = zScale;
-    shape = inShape;
     material = inMaterial;
     box = inBoundingBox;
     selected = isSelected;
+    speed = inSpeed;
+    direction = inDirection;
     
     
     
