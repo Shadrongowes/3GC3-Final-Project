@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		966BF05B18649FF7004A20F7 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966BF05918649FF7004A20F7 /* Particle.cpp */; };
 		966C2F541846800C006B0720 /* General3DPlane.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 966C2F531846800C006B0720 /* General3DPlane.1 */; };
 		966C2F5B1846801E006B0720 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966C2F5A1846801E006B0720 /* GLUT.framework */; };
 		966C2F5D18468023006B0720 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966C2F5C18468023006B0720 /* OpenGL.framework */; };
 		966C2F631846808A006B0720 /* 3DMathLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966C2F5E1846808A006B0720 /* 3DMathLib.cpp */; };
 		966C2F641846808A006B0720 /* FinalProject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966C2F601846808A006B0720 /* FinalProject.cpp */; };
 		966C2F651846808A006B0720 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966C2F611846808A006B0720 /* Object.cpp */; };
-		96ABAC8818648C1C001A9DCC /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96ABAC8718648C1C001A9DCC /* Particle.cpp */; };
 		96C5D0141863D43B00F6F4C7 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C5D0121863D43B00F6F4C7 /* Car.cpp */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +31,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		966BF05918649FF7004A20F7 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		966BF05A18649FF7004A20F7 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		966C2F4E1846800C006B0720 /* Assignment 3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Assignment 3"; sourceTree = BUILT_PRODUCTS_DIR; };
 		966C2F531846800C006B0720 /* General3DPlane.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = General3DPlane.1; sourceTree = "<group>"; };
 		966C2F5A1846801E006B0720 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -40,8 +42,6 @@
 		966C2F601846808A006B0720 /* FinalProject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FinalProject.cpp; sourceTree = "<group>"; };
 		966C2F611846808A006B0720 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		966C2F621846808A006B0720 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
-		96ABAC8718648C1C001A9DCC /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
-		96ABAC8918648C24001A9DCC /* Particle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		96C5D0121863D43B00F6F4C7 /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
 		96C5D0131863D43B00F6F4C7 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,14 +80,14 @@
 		966C2F501846800C006B0720 /* General3DPlane */ = {
 			isa = PBXGroup;
 			children = (
+				966BF05918649FF7004A20F7 /* Particle.cpp */,
+				966BF05A18649FF7004A20F7 /* Particle.h */,
 				966C2F5E1846808A006B0720 /* 3DMathLib.cpp */,
 				966C2F5F1846808A006B0720 /* 3DMathLib.h */,
 				966C2F611846808A006B0720 /* Object.cpp */,
 				966C2F621846808A006B0720 /* Object.h */,
 				966C2F531846800C006B0720 /* General3DPlane.1 */,
 				96C5D0121863D43B00F6F4C7 /* Car.cpp */,
-				96ABAC8918648C24001A9DCC /* Particle.h */,
-				96ABAC8718648C1C001A9DCC /* Particle.cpp */,
 				96C5D0131863D43B00F6F4C7 /* Car.h */,
 				966C2F601846808A006B0720 /* FinalProject.cpp */,
 			);
@@ -146,7 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				966C2F631846808A006B0720 /* 3DMathLib.cpp in Sources */,
-				96ABAC8818648C1C001A9DCC /* Particle.cpp in Sources */,
+				966BF05B18649FF7004A20F7 /* Particle.cpp in Sources */,
 				966C2F651846808A006B0720 /* Object.cpp in Sources */,
 				96C5D0141863D43B00F6F4C7 /* Car.cpp in Sources */,
 				966C2F641846808A006B0720 /* FinalProject.cpp in Sources */,

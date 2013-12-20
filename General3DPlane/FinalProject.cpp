@@ -22,6 +22,7 @@
 
 
 
+
 //Global Variables
 
 
@@ -39,6 +40,8 @@ bool gameComplete = false;
 bool winner = false;
 int count = 0;
 
+//used to add slow down effect on grass
+int friction=0;
 
 float xrot = 10;
 float yrot = 0;
@@ -440,19 +443,41 @@ void clearcars(object object1,int i){
 
 
 void reset(){
-    for(int i = 0; i<cars.size();i++){
-        
-        clearcars(cars[i], i);
-        
     
-    //reinitialize global variables
-        light_pos1[0] =-40.0;
-        light_pos1[1]=20.0;
-        light_pos1[2]=130.0;
-    camPos[0] =20;
-    camPos[1] =10;
-    camPos[2] =30;
+    for(int i = 0 ;i<cars.size();i++){
+        clearcars(cars[i], i);
     }
+        
+        carSelect = true;
+        moving = true;
+        gameComplete = false;
+        winner = false;
+        count = 0;
+        
+        //used to add slow down effect on grass
+        friction=0;
+        
+        xrot = 10;
+        yrot = 0;
+        angle=0.0;
+        lastx=0.0;
+        lasty=0.0;
+        carRotation = 0;
+        ypos = 0;
+        cRadius = 10.0f; // our radius distance from our character
+    
+        
+        
+        //Lighting Values
+        
+        float light_pos[] = {0.0, 2.0, -150.0, 0.01};
+        float light_pos1[] = {-40.0,-20.0,130.0,0.90};
+        float light_pos2[] = {5.0,20.0,-130.0,0.90};
+        
+        float amb0[4]  = {1, 1, 1, 1};
+        float diff0[4] = {1, 1, 1, 1};
+        float spec0[4] = {1, 1, 1, 1};
+    
     
 }
 
@@ -481,7 +506,6 @@ void drawStrokeText(char*string, int x, int y, int z)
     glPopMatrix();
 }
 
-//-------------------------------------------------------------------------
 
 
 
@@ -494,6 +518,27 @@ void reshape (int w, int h) {
     gluPerspective (60, (GLfloat)w / (GLfloat)h, 0.1, 100.0);
     glMatrixMode (GL_MODELVIEW); //set the matrix back to model
     
+}
+
+
+
+void updateForward(){
+    float xrotrad, yrotrad;
+    yrotrad = (yrot / 180 * 3.141592654f);
+    xrotrad = (xrot / 180 * 3.141592654f);
+    myCar.location.x += 3.5*float(sin(yrotrad))-3.5*friction;
+    myCar.location.z -= 3.5*float(cos(yrotrad))-3.5*friction;
+    ypos -= 6.5*float(sin(xrotrad));
+    moving = true;
+}
+
+void updateBackward(){
+    float xrotrad, yrotrad;
+    yrotrad = (yrot / 180 * 3.141592654f);
+    xrotrad = (xrot / 180 * 3.141592654f);
+    myCar.location.x -= float(sin(yrotrad));
+    myCar.location.z += float(cos(yrotrad));
+    ypos += float(sin(xrotrad));
 }
 
 
@@ -530,24 +575,13 @@ void keyboard(unsigned char key, int x, int y)
         
         if (key=='w')
         {
-            float xrotrad, yrotrad;
-            yrotrad = (yrot / 180 * 3.141592654f);
-            xrotrad = (xrot / 180 * 3.141592654f);
-            myCar.location.x += 3.5*float(sin(yrotrad));
-            myCar.location.z -= 3.5*float(cos(yrotrad));
-            ypos -= 6.5*float(sin(xrotrad));
-            moving = true;
+            updateForward();
         }
     
     
         if (key=='s')
         {
-            float xrotrad, yrotrad;
-            yrotrad = (yrot / 180 * 3.141592654f);
-            xrotrad = (xrot / 180 * 3.141592654f);
-            myCar.location.x -= float(sin(yrotrad));
-            myCar.location.z += float(cos(yrotrad));
-            ypos += float(sin(xrotrad));
+            updateBackward();
         }
         
         if (key=='d')
@@ -567,11 +601,11 @@ void keyboard(unsigned char key, int x, int y)
         }
 
      if(key == 'r'){
-         while (cars.size()>0){
-         reset();
+         while(cars.size()>0){
         
-         }
+         reset();
         }
+     }
     
     
      else if(key == '2'){
@@ -1219,7 +1253,7 @@ void gameCheck(){
             
             winner = false;
          
-             printf("%s","you loose");
+            
             
         }
         
@@ -1227,14 +1261,24 @@ void gameCheck(){
     
     
 }
+//For Future Use
 
-//
 //void collision(){
-//    if((abs(myCar.location.x-cars[2].location.x)<=2 )&&(myCar.location.z-cars[2].location.z)<=2)){
+//    if((abs(myCar.location.x-cars[2].location.x)<=1 )&&(myCar.location.z-cars[2].location.z-30)<=2){
 //        
+//        myCar.location.x = myCar.location.x+0.05;
+//    }
+//    if(abs(myCar.location.x)>14.5){
+//        
+//        friction = .7;
+//    }
+//    else{
+//        friction= 0;
 //    }
 //        
 //        }
+//
+
 
 void display(void){
     
@@ -1379,18 +1423,14 @@ if(carSelect){
         glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
         glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
         glLightfv(GL_LIGHT2,GL_POSITION,light_pos2);
-
+        
+        
+      //  collision(); //currently not in use
 
     glutKeyboardFunc(keyboard);
    
     for(int i = 0; i<cars.size();i++){
 
-    
-       
-        
-            
-       
-        
         
        //Used to switch the current targets shape a switch command was used to be able to easily change
     //Shapes
@@ -1444,7 +1484,7 @@ if(carSelect){
 
 	glutSwapBuffers();
     glutTimerFunc(5,timer,0);
-         printf("%f,\n%f",cars[2].location.z,myCar.location.z);
+         printf("%f,\n%f",cars[2].location.x,myCar.location.x);
     }
     
     
