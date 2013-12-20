@@ -33,21 +33,20 @@ char itemToMake[]={'c','s','t','o','y'};
 char currentItem = 'c';
 int item = 1;
 bool carSelect = true;
-<<<<<<< HEAD
-float carRotation = 0;
-float xpos = 0;
-=======
-int carRotation = 0;
-float xpos = 5;
->>>>>>> 7e88d294a416ae9c96f74a8e0bb8b135c0957dce
-float ypos = 0;
-float zpos = 10;
+point3D start(5,0,30);
+bool moving = true;
+bool gameComplete = false;
+bool winner = false;
+int count = 0;
+
+
 float xrot = 10;
 float yrot = 0;
 float angle=0.0;
 float lastx=0.0;
 float lasty=0.0;
-
+float carRotation = 0;
+float ypos = 0;
 float cRadius = 10.0f; // our radius distance from our character
 
 
@@ -89,54 +88,7 @@ void makeCheckImage(void)
            }
     }
 
-void makeCar(materialStruct material){
 
-		glPushMatrix();
-
-		glPushMatrix();
-		glTranslatef(1.5,0,1);
-		glRotatef(90, 0,1,0);
-		glRotatef(180, 1,0,0);
-        glutSolidCone(1,1,100,1);
-		glPopMatrix();
-
-		glPushMatrix();
-		glTranslatef(-1.5,0,1);
-		glRotatef(-90, 0,1,0);
-		glRotatef(-180, 1,0,0);
-        glutSolidCone(1,1,100,1);
-		glPopMatrix();
-
-		glPushMatrix();
-		glTranslatef(1.5,0,-1.5);
-		glRotatef(90, 0,1,0);
-		glRotatef(180, 1,0,0);
-        glutSolidCone(1,1,100,1);
-		glPopMatrix();
-
-		glPushMatrix();
-		glTranslatef(-1.5,0,-1.5);
-		glRotatef(-90, 0,1,0);
-		glRotatef(-180, 1,0,0);
-        glutSolidCone(1,1,100,1);
-		glPopMatrix();
-
-		glPushMatrix();
-		//glTranslatef(XCube,YCube,ZCube);
-        glutSolidCone(0.5,1,3,3);
-        glPopMatrix();
-
-
-		glTranslatef(0,1,0);
-		glutSolidCube(2);
-		glPopMatrix();
-		setMaterial('b');
-
-		glScalef(1, 1, 2);
-        glutSolidCube(2);
-
-		glPopMatrix();
-}
 
 
 
@@ -316,6 +268,8 @@ boundingBox standardBox(){
 }
 
 
+
+object myCar(start, 0.0,vel0, 'b',standardBox(), true);
 
 
 object createObject(){
@@ -579,18 +533,20 @@ void keyboard(unsigned char key, int x, int y)
             float xrotrad, yrotrad;
             yrotrad = (yrot / 180 * 3.141592654f);
             xrotrad = (xrot / 180 * 3.141592654f);
-            xpos += 6.5*float(sin(yrotrad));
-            zpos -= 6.5*float(cos(yrotrad));
+            myCar.location.x += 3.5*float(sin(yrotrad));
+            myCar.location.z -= 3.5*float(cos(yrotrad));
             ypos -= 6.5*float(sin(xrotrad));
+            moving = true;
         }
-        
+    
+    
         if (key=='s')
         {
             float xrotrad, yrotrad;
             yrotrad = (yrot / 180 * 3.141592654f);
             xrotrad = (xrot / 180 * 3.141592654f);
-            xpos -= float(sin(yrotrad));
-            zpos += float(cos(yrotrad));
+            myCar.location.x -= float(sin(yrotrad));
+            myCar.location.z += float(cos(yrotrad));
             ypos += float(sin(xrotrad));
         }
         
@@ -598,16 +554,16 @@ void keyboard(unsigned char key, int x, int y)
         {
             float yrotrad;
             yrotrad = (yrot / 180 * 3.141592654f);
-            xpos += float(cos(yrotrad)) * 0.2;
-            zpos += float(sin(yrotrad)) * 0.2;
+            myCar.location.x += float(cos(yrotrad)) * 0.2;
+            myCar.location.z += float(sin(yrotrad)) * 0.2;
         }
         
         if (key=='a')
         {
             float yrotrad;
             yrotrad = (yrot / 180 * 3.141592654f);
-            xpos -= float(cos(yrotrad)) * 0.2;
-            zpos -= float(sin(yrotrad)) * 0.2;
+            myCar.location.x -= float(cos(yrotrad)) * 0.2;
+            myCar.location.z -= float(sin(yrotrad)) * 0.2;
         }
 
      if(key == 'r'){
@@ -665,7 +621,7 @@ void keyboard(unsigned char key, int x, int y)
          light_pos1[2]=light_pos1[2]-5;
          light_pos[2]=light_pos[2]-5;
      }
-   
+  
     
 
 }
@@ -681,7 +637,16 @@ void mouseMovement(int x, int y) {
     int diffy=y-lasty; //check the difference between the
     lastx=x; //set lastx to the current x position
     lasty=y; //set lasty to the current y position
+
     xrot += (float) diffy; //set the xrot to xrot with the addition
+   
+    
+    if (xrot<360) {
+        xrot = 360;
+    }
+    else if(xrot>450){
+        xrot = 450;
+    }
     yrot += (float) diffx;    //set the xrot to yrot with the addition
 }
 
@@ -744,6 +709,7 @@ void init(void)
    
     
 }
+
 
 
 
@@ -818,6 +784,55 @@ void setMaterial(char key){
 }
 
 
+void makeCar(char col){
+    glPushMatrix();
+    glPushMatrix();
+    setMaterial('B');
+    glPushMatrix();
+    glTranslatef(1.5,0,1);
+    glRotatef(90, 0,1,0);
+    glRotatef(180, 1,0,0);
+    glutSolidCone(1,1,100,1);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(-1.5,0,1);
+    glRotatef(-90, 0,1,0);
+    glRotatef(-180, 1,0,0);
+    glutSolidCone(1,1,100,1);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(1.5,0,-1.5);
+    glRotatef(90, 0,1,0);
+    glRotatef(180, 1,0,0);
+    glutSolidCone(1,1,100,1);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(-1.5,0,-1.5);
+    glRotatef(-90, 0,1,0);
+    glRotatef(-180, 1,0,0);
+    glutSolidCone(1,1,100,1);
+    glPopMatrix();
+    
+    glPushMatrix();
+    //glTranslatef(XCube,YCube,ZCube);
+    glutSolidCone(0.5,1,3,3);
+    glPopMatrix();
+    
+    setMaterial(col);
+    
+    glTranslatef(0,1,0);
+    glutSolidCube(2);
+    glPopMatrix();
+    //setMaterial('b');
+    
+    glScalef(1, 1, 2);
+    glutSolidCube(2);
+    
+    glPopMatrix();
+}
 
 //Used an online tutorial to build this method to creat the ray vector
 //http://nehe.gamedev.net/article/using_gluunproject/16013/
@@ -850,9 +865,14 @@ vec3D GetOGLPos(int x, int y)
 
 
 void moveCar(){
+    if(moving){
+        cars[2].location.z = cars[2].location.z-(cars[2].location.z-(myCar.location.z))-30+((cars[2].location.z-(myCar.location.z))/(1+rand()%300))-((cars[2].location.z-(myCar.location.z))/(1+rand()%300));
     
-    cars[2].location.z = cars[2].location.z+6.5;
+      ;
+    }
+    
     translateFunction(cars[1], cars[1].speed.x, cars[1].speed.y, cars[1].speed.z);
+      moving=false;
 
 }
 
@@ -1076,18 +1096,10 @@ void mouse(int btn, int state, int x, int y){
         
         
         
-        for(int i = 0;i<cars.size();i++){
+     
             
-            if(intersectObject(cars[i], ray1)){
-                cars.erase(cars.begin()+i);
-                
-            }
-            
-            else{
-                
-                
-            }
-        }
+        
+        
 
     }
     
@@ -1122,7 +1134,7 @@ void createCars(){
    cars[1] = translateFunction(cars[1], 10, 0,0);
         cars[1]=scaleFunction(cars[1],2, 2, 2);
     
-    object newObj3(origin, 0.0, vel0, 'b',standardBox(), false);
+    object newObj3(origin, 0.0, vel0, 'b',standardBox(), true);
     cars.push_back(newObj3);
         cars[2]=scaleFunction(cars[2],2, 2, 2);
   
@@ -1181,14 +1193,45 @@ void drawEnvironment(){
     
 }
 
+void opponentCar(){
+    
+    glPushMatrix();
+    
+    glTranslatef(-6,0,30);
+    glTranslatef(cars[2].location.x, cars[2].location.y, cars[2].location.z);
+    makeCar('r');
+    
+    glPopMatrix();
+}
 
 
-
+void gameCheck(){
+    //THis is the finish line
+    
+    if ((myCar.location.z<-482.3) ||(cars[2].location.z<(-482.3-30)) ){
+        gameComplete = true;
+        
+        if (myCar.location.z<cars[2].location.z+30) {
+            winner = true;
+            
+        }
+        else{
+            
+            winner = false;
+         
+             printf("%s","you loose");
+            
+        }
+        
+    }
+    
+    
+}
 void display(void){
     
 if(carSelect){
 
-    
+        count=0;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0, 0, 0, 0);
         //---------------------------------------------
@@ -1197,11 +1240,9 @@ if(carSelect){
         glBindTexture(GL_TEXTURE_2D, texName);
         glDisable(GL_TEXTURE_2D);
         //-----------------------------------------------------------
-<<<<<<< HEAD
+
         carRotation+=0.5;
-=======
-        carRotation++;
->>>>>>> 7e88d294a416ae9c96f74a8e0bb8b135c0957dce
+
     
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
@@ -1218,15 +1259,11 @@ if(carSelect){
         
         for(int i = 0; i<cars.size();i++){
             glPushMatrix();
+            
             glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
             glRotatef(carRotation, 0, 1, 0);
-            setMaterial(cars[i].material);
-<<<<<<< HEAD
-            makeCar();
-=======
-            glutSolidCube(1);
->>>>>>> 7e88d294a416ae9c96f74a8e0bb8b135c0957dce
             
+            makeCar(cars[i].material);
             
             if(cars[i].selected){
                 glutWireCube(5);
@@ -1244,8 +1281,11 @@ if(carSelect){
         //Used to switch the current targets shape a switch command was used to be able to easily change
         //Shapes
 		glPushMatrix();
+
 		setMaterial('w');
-        drawBitmapText("Select your car and hit enter",-4,10,0);
+        drawBitmapText("Select your car and hit enter ",-4,10,0);
+      drawBitmapText("Use UP, DOWN and Side Arrows to inspect your ride ",-10,3,0);
+    
 		glPopMatrix();
 
         glutSwapBuffers();
@@ -1253,34 +1293,84 @@ if(carSelect){
 
     }
     
+    
+    
+    
+    
+    else if(gameComplete){
+        carSelect = false;
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0, 0, 0, 0);
+        //---------------------------------------------
+        glEnable(GL_TEXTURE_2D);
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+        glBindTexture(GL_TEXTURE_2D, texName);
+        glDisable(GL_TEXTURE_2D);
+        //-----------------------------------------------------------
+        
+        
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
+        
+        
+        
+        
+        glutKeyboardFunc(keyboard);
+        
+        
+        glPushMatrix();
+        
+        setMaterial('w');
+        
+        if (winner) {
+                 drawBitmapText("YOU HAVE WON!!! ",-4,10,0);
+        }
+        else
+            {
+                drawBitmapText("NICE TRY, BUT NO CIGAR ",-4,10,0);
+            }
+        
+       
+        glPopMatrix();
+        count++;
+        if (count>160) {
+            
+            gameComplete = false;
+            carSelect = true;
+        }
+        
+        glutSwapBuffers();
+        glutTimerFunc(5,timer,0);
+        
+        
+    }
+    
+    
+    
+    
+    
     else{
         
 
        
         
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(135, 206, 250, 1);
+        glClearColor(135/255., 206/255., 250/255., 1);
 	//---------------------------------------------
 	
 	
         
-        moveCar();
+        
 
-<<<<<<< HEAD
-    glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	gluLookAt(cars[1].location.x, cars[1].location.y+10, cars[1].location.z+30,cars[1].location.x, cars[1].location.y, cars[1].location.z, 0,1,0);
-    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-    glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
-=======
+
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(cars[1].location.x, cars[1].location.y+10, cars[1].location.z+30,cars[1].location.x, cars[1].location.y, cars[1].location.z, 0,1,0);
         glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
         glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
         glLightfv(GL_LIGHT2,GL_POSITION,light_pos2);
->>>>>>> 7e88d294a416ae9c96f74a8e0bb8b135c0957dce
-    
+
 
     glutKeyboardFunc(keyboard);
    
@@ -1290,19 +1380,7 @@ if(carSelect){
        
         
             
-            
-            if(cars[i].selected){
-                setMaterial('w');
-                glutWireCube(2);
-                cars[i].shape = currentItem;
-                setMaterial(currentMaterial);
-                cars[i].material = currentMaterial;
-                
-            }
-            else{
-                setMaterial(cars[i].material);
-                
-            }
+       
         
         
        //Used to switch the current targets shape a switch command was used to be able to easily change
@@ -1315,15 +1393,33 @@ if(carSelect){
         glTranslatef(0.0f, 0.0f, -cRadius);
         glRotatef(xrot,1.0,0.0,0.0);
         glColor3f(1.0f, 0.0f, 0.0f);
-        glutSolidCube(2);
+        
+        for (int i =0; i<cars.size(); i++) {
+            if (cars[i].selected) {
+                
+                myCar = cars[i];
+                myCar.location.z = 30;
+                myCar.location.x = 6;
+                yrot = 0;
+                xrot = 370;
+                cars[i].selected = false;
+                cars[2].location.z = 30;
+            }
+            
+            
+        }
+       makeCar(myCar.material);
+        
         
         glRotatef(yrot,0.0,1.0,0.0);
-        glTranslated(-xpos,0.0f,-zpos);
+        glTranslated(-myCar.location.x,0.0f,-myCar.location.z);
         glRotatef(cars[1].direction, 0, 1, 0);
         glMatrixMode(GL_MODELVIEW);
+        moveCar();
+        opponentCar();
         
-         drawEnvironment();
-        
+        drawEnvironment();
+       
         
         glPushMatrix();
 		glTranslatef(0.0, 5.0, -2.5);
@@ -1331,7 +1427,7 @@ if(carSelect){
         glPopMatrix();
     }
     
-
+        gameCheck();
     
     //The timerFunc is set to redisplay every 5ms
     
@@ -1340,8 +1436,9 @@ if(carSelect){
     glutTimerFunc(5,timer,0);
     }
     
-}
+    
 
+}
 
 
 //Texture
@@ -1354,7 +1451,7 @@ if(carSelect){
 
 int main(int argc, char** argv)
 {
-       
+    
     glutInit(&argc, argv);		//starts up GLUT
 	
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -1366,7 +1463,7 @@ int main(int argc, char** argv)
    
     
     
-	glutCreateWindow("Assignment 3");	//creates the window
+	glutCreateWindow("Hot Ridez");	//creates the window
     glutMouseFunc(mouse);
     glutSpecialFunc(special);
 
