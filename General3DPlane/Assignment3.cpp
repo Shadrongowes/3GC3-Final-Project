@@ -34,6 +34,7 @@ bool carSelect = true;
 int carRotation = 0;
 
 
+
 //Lighting Values
 
 float light_pos[] = {0.0, 20.0, 150.0, .10};
@@ -74,12 +75,61 @@ void makeCheckImage(void)
 
 
 
+
 /*Important*** Particle lifespan is not time based,In order to keep a fluent animation
  the lifespan of a particle is based on its Y value or Bounce count. Bomb fragments are 
  based on bounce count.
  */
 
 
+//TextureLoader from wikibooks.org
+
+GLuint raw_texture_load(const char *filename, int width, int height)
+{
+    GLuint texture;
+    unsigned char *data;
+    FILE *file;
+    
+    // open texture data
+    file = fopen(filename, "rb");
+    if (file == NULL) return 0;
+    
+    // allocate buffer
+    data = (unsigned char*) malloc(width * height * 4);
+    
+    // read texture data
+    fread(data, width * height * 4, 1, file);
+    fclose(file);
+    
+    // allocate a texture name
+    glGenTextures(1, &texture);
+    
+    // select our current texture
+    glBindTexture(GL_TEXTURE_2D, texture);
+    
+    // select modulate to mix texture with color for shading
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_DECAL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_DECAL);
+    
+    // when texture area is small, bilinear filter the closest mipmap
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+    // when texture area is large, bilinear filter the first mipmap
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    // texture should tile
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    
+    // build our texture mipmaps
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    
+    // free buffer
+    free(data);
+    
+    return texture;
+}
 
 
 
@@ -542,8 +592,10 @@ void init(void)
                 checkImageHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, 
                 checkImage);
  //---------------------------------------------------------------
-
-
+    
+    //load texture
+    
+    texture = raw_texture_load("road.raw", 256, 256);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45, 1, 1, 500);
@@ -660,53 +712,6 @@ vec3D GetOGLPos(int x, int y)
 }
 
 
-
-
-void drawRoom(){
-    setMaterial('w');
-    
-    glBegin(GL_QUADS);
-    
-    glNormal3f(0, 1, 0); //set the normal for stage lighting
-    
-    
-    
-   glVertex3f(500, -3, -500 );
-    glVertex3f(500, -3, 500 );
-    glVertex3f(-500,-3, 500 );
-    glVertex3f(-500, -3, -500 );
-    
-    glEnd();
-    
-   glNormal3f(-0.707, 0, 0);
-    glBegin(GL_QUADS);
-    
-    glVertex3f(500,5,-500);
-    glVertex3f(500,-3,-500);
-    glVertex3f(500,-3,500);
-    glVertex3f(500,5,500);
-    glEnd();
-    
-    glNormal3f(0.707, 0, 0);
-    
-    glBegin(GL_QUADS);
-    
-    glVertex3f(-500,5,-500);
-    glVertex3f(-500,-3,-500);
-    glVertex3f(-500,-3,500);
-    glVertex3f(-500,5,500);
-    glEnd();
-    
-    glNormal3f(0, 0, 0.707);
-    
-    glBegin(GL_QUADS);
-    
-    glVertex3f(500,5,-500);
-    glVertex3f(500,-3,-500);
-    glVertex3f(-500,-3,-500);
-    glVertex3f(-500,5,-500);
-    glEnd();
-}
 
 
 
@@ -982,7 +987,27 @@ void createCars(){
 
 
 //The timerFunc is set to redisplay every 5ms
-
+void drawRoom(){
+    setMaterial('w');
+    
+    glEnable(GL_TEXTURE_2D);
+    
+	glBindTexture(GL_TEXTURE_2D, texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glBegin(GL_QUADS);
+    
+    glNormal3f(0, 1, 0); //set the normal for stage lighting
+    
+    glVertex3f(500, -3, -500 );
+    glVertex3f(500, -3, 500 );
+    glVertex3f(-500,-3, 500 );
+    glVertex3f(-500, -3, -500 );
+    
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+    
+}
 
 
 void display(void){
@@ -1199,6 +1224,12 @@ if(carSelect){
     }
     
 }
+
+
+
+//Texture
+
+
 
 //-----------------------------------
 void reshape(int w, int h)
