@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glut.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-//#include <GLUT/glut.h>
-//#include <OpenGL/OpenGL.h>
+//#include <GL/glut.h>
+//#include <GL/glu.h>
+//#include <GL/gl.h>
+#include <GLUT/glut.h>
+#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -41,6 +41,7 @@ bool winner = false;
 int count = 0;
 int trafficTimer = 0;
 int traffic = 0;
+int trafficCounter;
 
 //used to add slow down effect on grass
 int friction=0;
@@ -74,6 +75,9 @@ ray mouseRay;
 #define checkImageHeight 64
 static GLubyte checkImage[checkImageHeight][checkImageWidth][4];
 
+
+
+//Imports in the final texture for the victory lane
 
 GLuint texture;
 static GLuint texName;
@@ -158,6 +162,8 @@ void makeCheckImage(void)
 
 /*Using Lighting, it was important to store the materials that we would be using in a type of datastore
  The Struct was used to store all material properties*/
+
+
 
 char currentMaterial = 'g';
 
@@ -274,6 +280,9 @@ boundingBox standardBox(){
 
 
 
+//Creates the drivablevehicle that is used in the game
+
+
 object myCar(start, 0.0,vel0, 'b',standardBox(), true);
 
 
@@ -285,6 +294,10 @@ object createObject(){
     return newObject;
 }
 
+
+//Traffic light creation to let the drivers know when it is a good time to go
+//We felt that this added to the feel of the game and the use of emmission from the lights
+//was well worth it
 
 
 void drawTrafficLight(float size, GLfloat topEmissive[], GLfloat middleEmissive[], GLfloat bottomEmissive[]) {
@@ -342,9 +355,13 @@ void drawTrafficLight(float size, GLfloat topEmissive[], GLfloat middleEmissive[
 }
 
 
+
+
+
 void notesToTheTA(void){
     
     printf("--------------------------- Car Selection -\nClick the mouse to select a car\nHit ENTER to confirm\nLeft/right = Camera Pan X\nUp/down = Camera Pan Y\nF1/F2 = Camera Pan Z\nQ = Quit\n----------------------- Race Instructions -\nMouse = Direct Car\nW = Drive\nS = Reverse\nA = Left\nD = Right\nR = Reset\nQ = Quit\n)");}
+
 
 
 
@@ -356,6 +373,7 @@ void deselectAll(){
 }
 
 
+//Timer
 
 void timer(int id){
     glutPostRedisplay();
@@ -458,7 +476,8 @@ void reset(){
         
         //used to add slow down effect on grass
         friction=0;
-        
+        traffic = 0;
+    trafficCounter=0;
         xrot = 10;
         yrot = 0;
         angle=0.0;
@@ -483,7 +502,12 @@ void reset(){
     
 }
 
-//------------------------------------------------------------------------
+
+//Bitmap character strings user for informing users of the game
+
+
+
+
 void drawBitmapText(char *string, float x, float y, float z)
 {
     char *c;
@@ -494,6 +518,9 @@ void drawBitmapText(char *string, float x, float y, float z)
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
     }
 }
+
+
+
 
 void drawStrokeText(char*string, int x, int y, int z)
 {
@@ -524,6 +551,8 @@ void reshape (int w, int h) {
 
 
 
+
+
 void updateForward(){
     float xrotrad, yrotrad;
     yrotrad = (yrot / 180 * 3.141592654f);
@@ -534,6 +563,9 @@ void updateForward(){
     moving = true;
 }
 
+
+
+
 void updateBackward(){
     float xrotrad, yrotrad;
     yrotrad = (yrot / 180 * 3.141592654f);
@@ -542,6 +574,9 @@ void updateBackward(){
     myCar.location.z += float(cos(yrotrad));
     ypos += float(sin(xrotrad));
 }
+
+
+
 
 
 //All keyboard controls worked with a tutorial from http://www.swiftless.com/
@@ -610,23 +645,8 @@ void keyboard(unsigned char key, int x, int y)
      }
     
     
-     else if(key == '2'){
-       
-         
-     }
-     else if(key == '3'){
-         
-        
-     }
-     else if(key == '4'){
-         
-         
-         
-     }
-     else if(key == '5'){
-         
-         
-     }
+    //Used to change Lighting Positions
+    
      else if(key == '6'){
         light_pos1[0]=light_pos1[0]+5;
          light_pos[0]=light_pos[0]+5;
@@ -713,11 +733,14 @@ void init(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, checkImageWidth, 
                 checkImageHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, 
                 checkImage);
- //---------------------------------------------------------------
+ 
     
-    //load texture
     
-   // texture = raw_texture_load("road.raw", 256, 256);
+//---------------------------------------------------------------
+//load texture
+    
+// texture = raw_texture_load("road.raw", 256, 256);
+    
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45, 1, 1, 500);
@@ -873,6 +896,10 @@ void makeCar(char col){
 //Used an online tutorial to build this method to creat the ray vector
 //http://nehe.gamedev.net/article/using_gluunproject/16013/
 
+
+
+
+
 vec3D GetOGLPos(int x, int y)
 {
     GLint viewport[4];
@@ -900,6 +927,8 @@ vec3D GetOGLPos(int x, int y)
 
 
 
+
+
 void moveCar(){
     if(moving){
         cars[2].location.z = cars[2].location.z-(cars[2].location.z-(myCar.location.z))-30+((cars[2].location.z-(myCar.location.z))/(1+rand()%300))-((cars[2].location.z-(myCar.location.z))/(1+rand()%300));
@@ -915,7 +944,7 @@ void moveCar(){
 
 
 
-
+//Camera controls in main menu
 
 
 void special(int key, int x, int y)
@@ -1225,9 +1254,12 @@ void drawEnvironment(){
     
 	glFlush();
 	glDisable(GL_TEXTURE_2D);
-    //-----------------------------------------------------------
+    
     
 }
+
+
+
 
 void opponentCar(){
     
@@ -1239,6 +1271,9 @@ void opponentCar(){
     
     glPopMatrix();
 }
+
+
+
 
 
 void gameCheck(){
@@ -1257,11 +1292,7 @@ void gameCheck(){
             
             winner = false;
          
-<<<<<<< HEAD
-            
-=======
-          
->>>>>>> ed132a2b61339bd39932a7937afe7e95820d194c
+
             
         }
         
@@ -1285,7 +1316,31 @@ void gameCheck(){
 //    }
 //        
 //        }
+
 //
+
+
+
+
+void trafficLogic(){
+    
+    
+if (traffic == 0) {
+    drawTrafficLight(2, blackPlastic.emission, blackPlastic.emission, blackPlastic.emission);
+}
+else if (traffic == 1) {
+    drawTrafficLight(2, redLight_emissive, blackPlastic.emission, blackPlastic.emission);
+}
+else if (traffic == 2) {
+    drawTrafficLight(2, redLight_emissive, orangeLight_emissive, blackPlastic.emission);
+}
+else {
+    drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
+}
+
+}
+
+
 
 
 void display(void){
@@ -1413,22 +1468,8 @@ if(carSelect){
     
     else{
         
+        trafficCounter++;
 
-    trafficTimer++;   
-
-	if (trafficTimer < 100) {
-		traffic = 0;
-	}
-	if (100 <= trafficTimer < 200) {
-		traffic = 1;
-	}
-	if (200 <= trafficTimer < 300) {
-		traffic = 2;
-	}
-	else {
-		traffic = 3;
-	}
-        
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(135/255., 206/255., 250/255., 1);
 	//---------------------------------------------
@@ -1490,38 +1531,41 @@ if(carSelect){
         opponentCar();
         
         drawEnvironment();
-       printf("%d",traffic);
+       printf("%d\n%d\n",trafficCounter,traffic);
         
         glPushMatrix();
 		glTranslatef(0.0, 5.0, -2.5);
-		if (traffic == 0) {
-			drawTrafficLight(2, blackPlastic.emission, blackPlastic.emission, blackPlastic.emission);
-			
-		}
-		else if (traffic == 1) {
-			drawTrafficLight(2, redLight_emissive, blackPlastic.emission, blackPlastic.emission);
-		}
-		else if (traffic == 2) {
-			drawTrafficLight(2, redLight_emissive, orangeLight_emissive, blackPlastic.emission);
-		}
-		else {
-			drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
-		}
+        trafficLogic();
+        
         glPopMatrix();
     }
     
         gameCheck();
-    
+        
+        
+        
+        
+        
+        if (trafficCounter< 100) {
+            traffic = 0;
+        }
+        else if (100 <= trafficCounter && trafficCounter< 200) {
+            traffic = 1;
+        }
+        else if (200 <= trafficCounter && trafficCounter < 300) {
+            traffic = 2;
+        }
+        else {
+            traffic = 3;
+        }
+        
+       
     //The timerFunc is set to redisplay every 5ms
     
 
 	glutSwapBuffers();
     glutTimerFunc(5,timer,0);
-<<<<<<< HEAD
-         printf("%f,\n%f",cars[2].location.x,myCar.location.x);
-=======
-        
->>>>>>> ed132a2b61339bd39932a7937afe7e95820d194c
+
     }
     
     
@@ -1529,12 +1573,7 @@ if(carSelect){
 }
 
 
-//Texture
 
-
-
-
-//--------------------------------------------
 
 
 int main(int argc, char** argv)
@@ -1577,7 +1616,7 @@ int main(int argc, char** argv)
    
   
 
-	    notesToTheTA();
+    notesToTheTA();
     
 	glutMainLoop();				//starts the event loop
     
