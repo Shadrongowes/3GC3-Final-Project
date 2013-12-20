@@ -17,7 +17,6 @@
 #include "Object.h"
 #include <ctime>
 #include <time.h>
-#include "Car.h"
 #include <string.h>
 
 
@@ -34,7 +33,7 @@ char itemToMake[]={'c','s','t','o','y'};
 char currentItem = 'c';
 int item = 1;
 bool carSelect = true;
-int carRotation = 0;
+float carRotation = 0;
 float xpos = 0;
 float ypos = 0;
 float zpos = 0;
@@ -84,7 +83,54 @@ void makeCheckImage(void)
            }
     }
 
+void makeCar(materialStruct material){
 
+		glPushMatrix();
+
+		glPushMatrix();
+		glTranslatef(1.5,0,1);
+		glRotatef(90, 0,1,0);
+		glRotatef(180, 1,0,0);
+        glutSolidCone(1,1,100,1);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(-1.5,0,1);
+		glRotatef(-90, 0,1,0);
+		glRotatef(-180, 1,0,0);
+        glutSolidCone(1,1,100,1);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(1.5,0,-1.5);
+		glRotatef(90, 0,1,0);
+		glRotatef(180, 1,0,0);
+        glutSolidCone(1,1,100,1);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(-1.5,0,-1.5);
+		glRotatef(-90, 0,1,0);
+		glRotatef(-180, 1,0,0);
+        glutSolidCone(1,1,100,1);
+		glPopMatrix();
+
+		glPushMatrix();
+		//glTranslatef(XCube,YCube,ZCube);
+        glutSolidCone(0.5,1,3,3);
+        glPopMatrix();
+
+
+		glTranslatef(0,1,0);
+		glutSolidCube(2);
+		glPopMatrix();
+		setMaterial('b');
+
+		glScalef(1, 1, 2);
+        glutSolidCube(2);
+
+		glPopMatrix();
+}
 
 
 
@@ -1129,13 +1175,8 @@ if(carSelect){
         glBindTexture(GL_TEXTURE_2D, texName);
         glDisable(GL_TEXTURE_2D);
         //-----------------------------------------------------------
-        carRotation++;
-        
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> b5b6f3b515d444e3e12dd1fb2967fa164051a0c6
+        carRotation+=0.5;
+    
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
@@ -1155,13 +1196,11 @@ if(carSelect){
             glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
             glRotatef(carRotation, 0, 1, 0);
             setMaterial(cars[i].material);
-            glutSolidCube(1);
-            
-            
+            makeCar();
             
             
             if(cars[i].selected){
-                glutWireCube(2);
+                glutWireCube(5);
                 
             }
             else{
@@ -1194,6 +1233,7 @@ if(carSelect){
         glClearColor(0, 0, 0, 0);
 	//---------------------------------------------
 	
+	
         
         moveCar();
 
@@ -1204,30 +1244,18 @@ if(carSelect){
     glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
     
 
-<<<<<<< HEAD
-   
-      
-        
-    
-=======
-    drawEnvironment();
->>>>>>> b5b6f3b515d444e3e12dd1fb2967fa164051a0c6
-
     glutKeyboardFunc(keyboard);
    
     for(int i = 0; i<cars.size();i++){
-<<<<<<< HEAD
-=======
-        glPushMatrix();
-        glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
-        glPushMatrix();
-        glScalef(cars[i].scaleX,cars[i].scaleY,cars[i].scaleZ);
+
+    
+       
         
             
             
             if(cars[i].selected){
                 setMaterial('w');
-                glutWireCube(cars[i].scaleX*2);
+                glutWireCube(2);
                 cars[i].shape = currentItem;
                 setMaterial(currentMaterial);
                 cars[i].material = currentMaterial;
@@ -1242,8 +1270,7 @@ if(carSelect){
        //Used to switch the current targets shape a switch command was used to be able to easily change
     //Shapes
         
->>>>>>> b5b6f3b515d444e3e12dd1fb2967fa164051a0c6
-        
+
         setMaterial('w');
         glLoadIdentity();
      
