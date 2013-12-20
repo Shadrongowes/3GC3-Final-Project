@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <GL/glut.h>
-//#include <GL/glu.h>
-//#include <GL/gl.h>
-#include <GLUT/glut.h>
-#include <OpenGL/OpenGL.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+//#include <GLUT/glut.h>
+//#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -1014,7 +1014,6 @@ void display(void){
     
 if(carSelect){
         
-		drawBitmapText("Hello world",0,0,0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0, 0, 0, 0);
         //---------------------------------------------
@@ -1063,8 +1062,11 @@ if(carSelect){
         
         //Used to switch the current targets shape a switch command was used to be able to easily change
         //Shapes
-        
-        
+		glPushMatrix();
+        glScalef(1,1,1);
+        drawBitmapText("Hello world",0,10,0);
+		glPopMatrix();
+
         glutSwapBuffers();
         glutTimerFunc(20,timer,0);
 
