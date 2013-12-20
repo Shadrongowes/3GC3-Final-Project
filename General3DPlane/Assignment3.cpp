@@ -5,8 +5,11 @@
 
 
 #include <stdlib.h>
-#include <GLUT/glut.h>
-#include <OpenGL/OpenGL.h>
+#include <GL/glut.h>	
+#include <GL/glu.h>			
+#include <GL/gl.h>
+//#include <GLUT/glut.h>
+//#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -14,6 +17,29 @@
 #include "Object.h"
 #include <ctime>
 #include <time.h>
+
+#define checkImageWidth 64
+#define checkImageHeight 64
+static GLubyte checkImage[checkImageHeight][checkImageWidth][4];
+
+static GLuint texName;
+
+void makeCheckImage(void)
+{
+   int i, j, c;
+    
+   for (i = 0; i < checkImageHeight; i++) {
+      for (j = 0; j < checkImageWidth; j++) {
+         c = ((((i&0x8)==0)^((j&0x8))==0))*255;
+         checkImage[i][j][0] = (GLubyte) c;
+         checkImage[i][j][1] = (GLubyte) c;
+         checkImage[i][j][2] = (GLubyte) c;
+         checkImage[i][j][3] = (GLubyte) 255;
+      }
+   }
+}
+
+
 
 
 /*Important*** Particle lifespan is not time based,In order to keep a fluent animation
@@ -463,12 +489,32 @@ void keyboard(unsigned char key, int x, int y)
 void init(void)
 {
 	glClearColor(0.25, 0.25, 0.25, 0); //sets backgorund to grey
+	//---------------------------------------------
+    glShadeModel(GL_FLAT);
+	glEnable(GL_DEPTH_TEST);
 
-    
+	makeCheckImage();
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	glGenTextures(1, &texName);
+	glBindTexture(GL_TEXTURE_2D, texName);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, 
+                   GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, 
+                   GL_NEAREST);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, checkImageWidth, 
+                checkImageHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, 
+                checkImage);
+ //---------------------------------------------------------------
+
+
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45, 1, 1, 500);
- 
+
     
     
     glEnable(GL_LIGHTING);
@@ -599,33 +645,33 @@ void drawRoom(){
     
     glEnd();
     
-    glNormal3f(-0.707, 0, 0);
+   glNormal3f(-0.707, 0, 0);
     glBegin(GL_QUADS);
     
-    glVertex3f(80,80,-80);
+    glVertex3f(80,5,-80);
     glVertex3f(80,-3,-80);
     glVertex3f(80,-3,80);
-    glVertex3f(80,80,80);
+    glVertex3f(80,5,80);
     glEnd();
     
     glNormal3f(0.707, 0, 0);
     
     glBegin(GL_QUADS);
     
-    glVertex3f(-80,80,-80);
+    glVertex3f(-80,5,-80);
     glVertex3f(-80,-3,-80);
     glVertex3f(-80,-3,80);
-    glVertex3f(-80,80,80);
+    glVertex3f(-80,5,80);
     glEnd();
     
     glNormal3f(0, 0, 0.707);
     
     glBegin(GL_QUADS);
     
-    glVertex3f(80,80,-80);
+    glVertex3f(80,5,-80);
     glVertex3f(80,-3,-80);
     glVertex3f(-80,-3,-80);
-    glVertex3f(-80,80,-80);
+    glVertex3f(-80,5,-80);
     glEnd();
 }
 
@@ -891,13 +937,29 @@ void isSelected(){
 
 
 
-void display(void)
+void display(void){
 
-
-{
-    
-    
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//---------------------------------------------
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	glBindTexture(GL_TEXTURE_2D, texName);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0); glVertex3f(8, -2.5, -8);
+	glTexCoord2f(0.0, 1.0); glVertex3f(8, -2.5, 8);
+	glTexCoord2f(1.0, 1.0); glVertex3f(-8,-2.5, 8 );
+	glTexCoord2f(1.0, 0.0); glVertex3f(-8, -2.5, -8 );
+
+	/*glTexCoord2f(0.0, 0.0); glVertex4f(1.0, -1.0, 0.0);
+	glTexCoord2f(0.0, 1.0); glVertex4f(1.0, 1.0, 0.0);
+	glTexCoord2f(1.0, 1.0); glVertex4f(2.41421, 1.0, -1.41421);
+	glTexCoord2f(1.0, 0.0); glVertex4f(2.41421, -1.0, -1.41421);*/
+	glEnd();
+	glFlush();
+	glDisable(GL_TEXTURE_2D);
+   //-----------------------------------------------------------
+
+
     glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
@@ -1019,7 +1081,18 @@ void display(void)
     
 }
 
-
+//-----------------------------------
+void reshape(int w, int h)
+{
+   glViewport(0, 0, (GLsizei) w, (GLsizei) h);
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 30.0);
+   glMatrixMode(GL_MODELVIEW);
+   glLoadIdentity();
+   glTranslatef(0.0, 0.0, -3.6);
+}
+//--------------------------------------------
 
 int main(int argc, char** argv)
 {
