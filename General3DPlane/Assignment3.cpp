@@ -52,7 +52,7 @@ void makeCheckImage(void)
 //Global Variables
 
 
-float camPos[] = {20, 10, 30};
+float camPos[] = {0, 10, 30};
 point3D origin(0,0,0);
 vec3D normalPlane(0,1,0);
 char itemToMake[]={'c','s','t','o','y'};
