@@ -18,9 +18,8 @@
 #include <ctime>
 #include <time.h>
 #include <string.h>
-
-
-
+#include "wavefrontLoader.h"
+#include "Particle.h"
 
 //Global Variables
 
@@ -48,6 +47,13 @@ float lasty=0.0;
 float carRotation = 0;
 float ypos = 0;
 float cRadius = 10.0f; // our radius distance from our character
+
+
+
+//particles List
+
+std::vector<particle> particles;
+
 
 
 
@@ -1334,7 +1340,7 @@ if(carSelect){
        
         glPopMatrix();
         count++;
-        if (count>160) {
+        if (count>1600) {
             
             gameComplete = false;
             carSelect = true;
