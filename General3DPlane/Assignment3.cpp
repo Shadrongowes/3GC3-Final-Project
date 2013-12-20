@@ -35,10 +35,10 @@ char currentItem = 'c';
 int item = 1;
 bool carSelect = true;
 int carRotation = 0;
-float xpos = 0;
+float xpos = 5;
 float ypos = 0;
-float zpos = 0;
-float xrot = 0;
+float zpos = 10;
+float xrot = 10;
 float yrot = 0;
 float angle=0.0;
 float lastx=0.0;
@@ -50,8 +50,9 @@ float cRadius = 10.0f; // our radius distance from our character
 
 //Lighting Values
 
-float light_pos[] = {0.0, 20.0, 150.0, .10};
-float light_pos1[] = {-40.0,20.0,130.0,0.10};
+float light_pos[] = {0.0, 2.0, -150.0, 0.01};
+float light_pos1[] = {-40.0,-20.0,130.0,0.90};
+float light_pos2[] = {5.0,20.0,-130.0,0.90};
 
 float amb0[4]  = {1, 1, 1, 1};
 float diff0[4] = {1, 1, 1, 1};
@@ -166,6 +167,12 @@ materialStruct redPlastic = {
     {0.8, 0.6, 0.6, 1.0},
     {0.0, 0.0, 0.0, 0.0},
     32.0};
+materialStruct greenGrass = {
+    {0.0, 0.3, 0.0, 1.0},
+    {0.0, 0.6, 0.0, 1.0},
+    {0.8, 0.6, 0.0, 1.0},
+    {0.0, 0.8, 0.0, 0.0},
+    0.0};
 
 materialStruct water = {
     {0.0,0.0,0.3},
@@ -377,40 +384,32 @@ object translateFunction(object vehicle,float x, float y, float z){
 //Not used for cars because they dont scale...
 
 
-//void scaleFunction(float x, float y, float z){
-//    
-//    for(int i = 0;i<cars.size();i++){
-//        if(cars[i].selected){
-//            
-//             cars[i].scaleX = cars[i].scaleX+x;
-//             cars[i].scaleY = cars[i].scaleY+y;
-//             cars[i].scaleZ = cars[i].scaleZ+z;
-//            
-//            
-//            
-//            //shift all bounding boxes
-//            //this is done by calculating the distance between the center of the object and the far edges
-//            //This value is then multiplied by half the scaling factor to increase the bounding box size
-//            
-//            
-//            cars[i].box.left.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.left.origin).scalarMultiply(1+x));
-//            
-//            cars[i].box.right.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.right.origin).scalarMultiply(1+x));
-//            
-//            cars[i].box.bottom.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.bottom.origin).scalarMultiply(1+y));
-//            
-//            cars[i].box.top.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.top.origin).scalarMultiply(1+y));
-//            
-//            cars[i].box.front.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.front.origin).scalarMultiply(1+z));
-//            
-//            cars[i].box.back.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.back.origin).scalarMultiply(1+z));
-//            
-//        
-//        }
-//    }
-//    
-//    
-//}
+object scaleFunction(object car,float x, float y, float z){
+   
+            
+            
+            
+            //shift all bounding boxes
+            //this is done by calculating the distance between the center of the object and the far edges
+            //This value is then multiplied by half the scaling factor to increase the bounding box size
+            
+            
+            car.box.left.origin = car.location.shift(createVector(car.location, car.box.left.origin).scalarMultiply(1+x));
+            
+            car.box.right.origin = car.location.shift(createVector(car.location, car.box.right.origin).scalarMultiply(1+x));
+            
+            car.box.bottom.origin = car.location.shift(createVector(car.location, car.box.bottom.origin).scalarMultiply(1+y));
+            
+            car.box.top.origin = car.location.shift(createVector(car.location, car.box.top.origin).scalarMultiply(1+y));
+            
+            car.box.front.origin = car.location.shift(createVector(car.location, car.box.front.origin).scalarMultiply(1+z));
+    
+            car.box.back.origin = car.location.shift(createVector(car.location, car.box.back.origin).scalarMultiply(1+z));
+            
+    
+    return car;
+    
+}
 
 
 void rotationRunction(float x,float y, float z,float angle){
@@ -493,7 +492,7 @@ void reshape (int w, int h) {
 }
 
 
-//All keyboard controls
+//All keyboard controls worked with a tutorial from http://www.swiftless.com/
 
 
 void keyboard(unsigned char key, int x, int y)
@@ -506,7 +505,7 @@ void keyboard(unsigned char key, int x, int y)
 			exit (0);
             
         }
-    if(key == '1'){
+    if(key == 13){
         carSelect = false;
         //carSelect=false;
         
@@ -529,9 +528,9 @@ void keyboard(unsigned char key, int x, int y)
             float xrotrad, yrotrad;
             yrotrad = (yrot / 180 * 3.141592654f);
             xrotrad = (xrot / 180 * 3.141592654f);
-            xpos += float(sin(yrotrad));
-            zpos -= float(cos(yrotrad));
-            ypos -= float(sin(xrotrad));
+            xpos += 6.5*float(sin(yrotrad));
+            zpos -= 6.5*float(cos(yrotrad));
+            ypos -= 6.5*float(sin(xrotrad));
         }
         
         if (key=='s')
@@ -676,6 +675,7 @@ void init(void)
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glEnable(GL_LIGHT1);
+    glEnable(GL_LIGHT2);
     
     
     
@@ -686,6 +686,10 @@ void init(void)
     glLightfv(GL_LIGHT1, GL_AMBIENT, amb0);
     glLightfv(GL_LIGHT1, GL_DIFFUSE, diff0);
     glLightfv(GL_LIGHT1, GL_SPECULAR, spec0);
+    
+    glLightfv(GL_LIGHT2, GL_AMBIENT, amb0);
+    glLightfv(GL_LIGHT2, GL_DIFFUSE, diff0);
+    glLightfv(GL_LIGHT2, GL_SPECULAR, spec0);
    
     
 }
@@ -722,6 +726,14 @@ void setMaterial(char key){
             
             break;
             
+        case 'G':
+            glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,greenGrass.ambient);
+            glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,greenGrass.diffuse);
+            glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, greenGrass.specular);
+            glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, greenGrass.shininess);
+            
+            break;
+            
         case 'w':
             glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,whitePlastic.ambient);
             glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, whitePlastic.diffuse);
@@ -738,7 +750,7 @@ void setMaterial(char key){
             
             break;
             
-            case 'g':
+        case 'g':
             glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,gold.ambient);
             glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, gold.diffuse);
             glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, gold.specular);
@@ -788,7 +800,7 @@ vec3D GetOGLPos(int x, int y)
 
 void moveCar(){
     
-    cars[1].location = cars[1].location.shift(cars[1].speed);
+    cars[2].location.z = cars[2].location.z+6.5;
     translateFunction(cars[1], cars[1].speed.x, cars[1].speed.y, cars[1].speed.z);
 
 }
@@ -1052,13 +1064,16 @@ void createCars(){
     object newObj(origin, 0.0, vel0, 'r',standardBox(), false);
     cars.push_back(newObj);
     cars[0] = translateFunction(cars[0], -10, 0,0);
+    cars[0]=scaleFunction(cars[0],2, 2, 2);
     
     object newObj2(origin, 0.0, vel0, 'y',standardBox(), false);
     cars.push_back(newObj2);
    cars[1] = translateFunction(cars[1], 10, 0,0);
+        cars[1]=scaleFunction(cars[1],2, 2, 2);
     
     object newObj3(origin, 0.0, vel0, 'b',standardBox(), false);
     cars.push_back(newObj3);
+        cars[2]=scaleFunction(cars[2],2, 2, 2);
   
 }
 
@@ -1066,17 +1081,17 @@ void createCars(){
 //The timerFunc is set to redisplay every 5ms
 void drawEnvironment(){
     
-    setMaterial('B');
-    
     
     glBegin(GL_QUADS);
     
     glNormal3f(0, 1, 0); //set the normal for stage lighting
+    setMaterial('G');
+    glVertex3f(500, -1, -500 );
+    glVertex3f(500, -1, 500 );
+    glVertex3f(-500,-1, 500 );
+    glVertex3f(-500, -1, -500 );
     
-    glVertex3f(500, 0, -500 );
-    glVertex3f(500, 0, 500 );
-    glVertex3f(-500,0, 500 );
-    glVertex3f(-500, 0, -500 );
+    setMaterial('B');
     
     glEnd();
     glDisable(GL_TEXTURE_2D);
@@ -1084,10 +1099,10 @@ void drawEnvironment(){
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 	glBindTexture(GL_TEXTURE_2D, texName);
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0, 0.0); glVertex3f(-15,-2.5, -500); //8+72=80,
-	glTexCoord2f(0.0, 1.0); glVertex3f(15,-2.5, -500);
-	glTexCoord2f(1.0, 1.0); glVertex3f(15,-2.5, -485 );//-8+72
-	glTexCoord2f(1.0, 0.0); glVertex3f(-15,-2.5,-485);
+	glTexCoord2f(0.0, 0.0); glVertex3f(-15,-.8, -500); //8+72=80,
+	glTexCoord2f(0.0, 1.0); glVertex3f(15,-.8, -500);
+	glTexCoord2f(1.0, 1.0); glVertex3f(15,-.8, -485 );//-8+72
+	glTexCoord2f(1.0, 0.0); glVertex3f(-15,-.8,-485);
     
 	/*glTexCoord2f(0.0, 0.0); glVertex4f(1.0, -1.0, 0.0);
      glTexCoord2f(0.0, 1.0); glVertex4f(1.0, 1.0, 0.0);
@@ -1100,13 +1115,13 @@ void drawEnvironment(){
 	//glBindTexture(GL_TEXTURE_2D, texture name goes here);
 	glBegin(GL_QUADS);
 	//glTexCoord2f(0.0, 0.0);
-	glVertex3f(-15,-2.5, -485); //8+72=80,
+	glVertex3f(-15,-.9, -485); //8+72=80,
 	//glTexCoord2f(0.0, 1.0);
-	glVertex3f(15,-2.5, -485);
+	glVertex3f(15,-.9, -485);
 	//glTexCoord2f(1.0, 1.0);
-	glVertex3f(15,-2.5, 500 );//-8+72
+	glVertex3f(15,-.9, 500 );//-8+72
 	//glTexCoord2f(1.0, 0.0);
-	glVertex3f(-15,-2.5,500);
+	glVertex3f(-15,-.9 ,500);
 	glEnd();
     
 	glFlush();
@@ -1114,6 +1129,8 @@ void drawEnvironment(){
     //-----------------------------------------------------------
     
 }
+
+
 
 
 void display(void){
@@ -1134,9 +1151,8 @@ if(carSelect){
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
-        glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-        glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
-        
+
+    
         
         
         glutKeyboardFunc(keyboard);
@@ -1184,17 +1200,18 @@ if(carSelect){
        
         
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(0, 0, 0, 0);
+        glClearColor(135, 206, 250, 1);
 	//---------------------------------------------
 	
         
         moveCar();
 
-    glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	gluLookAt(cars[1].location.x, cars[1].location.y+10, cars[1].location.z+30,cars[1].location.x, cars[1].location.y, cars[1].location.z, 0,1,0);
-    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-    glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        gluLookAt(cars[1].location.x, cars[1].location.y+10, cars[1].location.z+30,cars[1].location.x, cars[1].location.y, cars[1].location.z, 0,1,0);
+        glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+        glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
+        glLightfv(GL_LIGHT2,GL_POSITION,light_pos2);
     
 
     glutKeyboardFunc(keyboard);
@@ -1230,7 +1247,7 @@ if(carSelect){
         glTranslatef(0.0f, 0.0f, -cRadius);
         glRotatef(xrot,1.0,0.0,0.0);
         glColor3f(1.0f, 0.0f, 0.0f);
-        glutSolidCube(2); //Our character to follow
+        glutSolidCube(2);
         
         glRotatef(yrot,0.0,1.0,0.0);
         glTranslated(-xpos,0.0f,-zpos);
@@ -1252,7 +1269,7 @@ if(carSelect){
     
 
 	glutSwapBuffers();
-    glutTimerFunc(20,timer,0);
+    glutTimerFunc(5,timer,0);
     }
     
 }
