@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <GL/glut.h>
-//#include <GL/glu.h>
-//#include <GL/gl.h>
-#include <GLUT/glut.h>
-#include <OpenGL/OpenGL.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+//#include <GLUT/glut.h>
+//#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -1108,8 +1108,7 @@ if(carSelect){
         //-----------------------------------------------------------
         carRotation++;
         
-		glMatrixMode(GL_PROJECTION);
-		glTranslatef(0.0, 0.0, -12.0);
+	
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
@@ -1149,8 +1148,8 @@ if(carSelect){
         //Used to switch the current targets shape a switch command was used to be able to easily change
         //Shapes
 		glPushMatrix();
-        //glutBitmapCharacter(font, c);
-        drawBitmapText("Hello world",0,10,0);
+		setMaterial('w');
+        drawBitmapText("Select your car and hit enter",-4,10,0);
 		glPopMatrix();
 
         glutSwapBuffers();
@@ -1172,13 +1171,9 @@ if(carSelect){
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
     glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
     
-<<<<<<< HEAD
-    drawEnvironment();
-    
-=======
-    drawRoom();
 
->>>>>>> c918de650bac302cd848e2a80980df941f7bedc3
+    drawEnvironment();
+
     glutKeyboardFunc(keyboard);
     
     for(int i = 0; i<cars.size();i++){
@@ -1201,8 +1196,6 @@ if(carSelect){
                 setMaterial(cars[i].material);
                 
             }
-        
-        
         
         
        //Used to switch the current targets shape a switch command was used to be able to easily change
