@@ -189,6 +189,9 @@ materialStruct gold = {
     100.8};
 
 
+GLfloat redLight_emissive[] = {1.0f, 0.0f, 0.0f, 0.0f};
+GLfloat orangeLight_emissive[] = {1.0f, 0.4f, 0.0f, 0.0f};
+GLfloat greenLight_emissive[] = {0.0f, 1.0f, 0.0f, 0.0f};
 
 
 
@@ -254,6 +257,59 @@ object createObject(){
 
 
 
+void drawTrafficLight(float size, GLfloat topEmissive[], GLfloat middleEmissive[], GLfloat bottomEmissive[]) {
+	glMaterialfv(GL_FRONT, GL_EMISSION, blackPlastic.emission);
+	glBegin(GL_QUADS);
+		glVertex3f(-size/2, -size*1.5f, -size/2);
+		glVertex3f( size/2, -size*1.5f, -size/2);
+		glVertex3f( size/2, -size*1.5f,  size/2);
+		glVertex3f(-size/2, -size*1.5f,  size/2);
+
+		glVertex3f(-size/2, -size*1.5f, -size/2);
+		glVertex3f( size/2, -size*1.5f, -size/2);
+		glVertex3f( size/2,  size*1.5f, -size/2);
+		glVertex3f(-size/2,  size*1.5f, -size/2);
+
+		glVertex3f(-size/2, -size*1.5f, -size/2);
+		glVertex3f(-size/2, -size*1.5f,  size/2);
+		glVertex3f(-size/2,  size*1.5f,  size/2);
+		glVertex3f(-size/2,  size*1.5f, -size/2);
+
+		glVertex3f(-size/2, -size*1.5f,  size/2);
+		glVertex3f( size/2, -size*1.5f,  size/2);
+		glVertex3f( size/2,  size*1.5f,  size/2);
+		glVertex3f(-size/2,  size*1.5f,  size/2);
+
+		glVertex3f( size/2, -size*1.5f, -size/2);
+		glVertex3f( size/2, -size*1.5f,  size/2);
+		glVertex3f( size/2,  size*1.5f,  size/2);
+		glVertex3f( size/2,  size*1.5f, -size/2);
+		
+		glVertex3f(-size/2,  size*1.5f, -size/2);
+		glVertex3f( size/2,  size*1.5f, -size/2);
+		glVertex3f( size/2,  size*1.5f,  size/2);
+		glVertex3f(-size/2,  size*1.5f,  size/2);
+	glEnd();
+
+	glPushMatrix();
+		glMaterialfv(GL_FRONT, GL_EMISSION, topEmissive);
+		glTranslatef(0, size, size/2);
+		glutSolidSphere(size/3, 16, 16);
+	glPopMatrix();
+
+	glPushMatrix();
+		glMaterialfv(GL_FRONT, GL_EMISSION, middleEmissive);
+		glTranslatef(0, 0, size/2);
+		glutSolidSphere(size/3, 16, 16);
+	glPopMatrix();
+
+	glPushMatrix();
+		glMaterialfv(GL_FRONT, GL_EMISSION, bottomEmissive);
+		glTranslatef(0, -size, size/2);
+		glutSolidSphere(size/3, 16, 16);
+	glPopMatrix();
+	glMaterialfv(GL_FRONT, GL_EMISSION, blackPlastic.emission);
+}
 
 
 void notesToTheTA(void){
@@ -1052,6 +1108,8 @@ if(carSelect){
         //-----------------------------------------------------------
         carRotation++;
         
+		glMatrixMode(GL_PROJECTION);
+		glTranslatef(0.0, 0.0, -12.0);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
@@ -1103,7 +1161,7 @@ if(carSelect){
     else{
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(1, 1, 1, 1);
+        glClearColor(0, 0, 0, 0);
 	//---------------------------------------------
 	
 
@@ -1114,8 +1172,13 @@ if(carSelect){
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
     glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
     
+<<<<<<< HEAD
     drawEnvironment();
     
+=======
+    drawRoom();
+
+>>>>>>> c918de650bac302cd848e2a80980df941f7bedc3
     glutKeyboardFunc(keyboard);
     
     for(int i = 0; i<cars.size();i++){
@@ -1213,6 +1276,10 @@ if(carSelect){
         
         glPopMatrix();
         glPopMatrix();
+    glPushMatrix();
+		glTranslatef(0.0, 5.0, -2.5);
+		drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
+	glPopMatrix();
     }
     
 
