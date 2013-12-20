@@ -38,8 +38,20 @@ void drawTrafficLight(double size) {
 
 	glPushMatrix();
 		glColor3f(1, 0, 0);
+		glTranslatef(0, size, size/2);
+		glutSolidSphere(size/3, 16, 16);
+	glPopMatrix();
+
+	glPushMatrix();
+		glColor3f(1, 0.5, 0);
 		glTranslatef(0, 0, size/2);
-		glutSolidSphere(size/2, 8, 8);
+		glutSolidSphere(size/3, 16, 16);
+	glPopMatrix();
+
+	glPushMatrix();
+		glColor3f(0, 1, 0);
+		glTranslatef(0, -size, size/2);
+		glutSolidSphere(size/3, 16, 16);
 	glPopMatrix();
 
 }
@@ -48,13 +60,13 @@ void display() {
 	//clear the screen
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	drawTrafficLight(2);
+	drawTrafficLight(1);
 	glutSwapBuffers();
 }
 
 void main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitWindowSize(800, 800);
+	glutInitWindowSize(600, 600);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow("Traffic Light");
 
@@ -62,8 +74,8 @@ void main(int argc, char** argv) {
 	glEnable(GL_DEPTH_TEST);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(20, 1, 1, 50);
-	gluLookAt(5, 0, 30, 0, 0, 0, 0, 1, 0);
+	gluPerspective(10, 1, 1, 50);
+	gluLookAt(10, -10, 30, 0, 0, 0, 0, 1, 0);
 
 	//set clear colour to black
 	glClearColor(0, 0, 0, 0);
