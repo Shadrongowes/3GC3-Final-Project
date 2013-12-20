@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glut.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-//#include <GLUT/glut.h>
-//#include <OpenGL/OpenGL.h>
+//#include <GL/glut.h>
+//#include <GL/glu.h>
+//#include <GL/gl.h>
+#include <GLUT/glut.h>
+#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -1130,12 +1130,7 @@ if(carSelect){
         glDisable(GL_TEXTURE_2D);
         //-----------------------------------------------------------
         carRotation++;
-        
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> b5b6f3b515d444e3e12dd1fb2967fa164051a0c6
+    
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
@@ -1156,8 +1151,6 @@ if(carSelect){
             glRotatef(carRotation, 0, 1, 0);
             setMaterial(cars[i].material);
             glutSolidCube(1);
-            
-            
             
             
             if(cars[i].selected){
@@ -1181,7 +1174,7 @@ if(carSelect){
 		glPopMatrix();
 
         glutSwapBuffers();
-        glutTimerFunc(20,timer,0);
+        glutTimerFunc(5,timer,0);
 
     }
     
@@ -1204,30 +1197,18 @@ if(carSelect){
     glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
     
 
-<<<<<<< HEAD
-   
-      
-        
-    
-=======
-    drawEnvironment();
->>>>>>> b5b6f3b515d444e3e12dd1fb2967fa164051a0c6
-
     glutKeyboardFunc(keyboard);
    
     for(int i = 0; i<cars.size();i++){
-<<<<<<< HEAD
-=======
-        glPushMatrix();
-        glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
-        glPushMatrix();
-        glScalef(cars[i].scaleX,cars[i].scaleY,cars[i].scaleZ);
+
+    
+       
         
             
             
             if(cars[i].selected){
                 setMaterial('w');
-                glutWireCube(cars[i].scaleX*2);
+                glutWireCube(2);
                 cars[i].shape = currentItem;
                 setMaterial(currentMaterial);
                 cars[i].material = currentMaterial;
@@ -1242,8 +1223,7 @@ if(carSelect){
        //Used to switch the current targets shape a switch command was used to be able to easily change
     //Shapes
         
->>>>>>> b5b6f3b515d444e3e12dd1fb2967fa164051a0c6
-        
+
         setMaterial('w');
         glLoadIdentity();
      
