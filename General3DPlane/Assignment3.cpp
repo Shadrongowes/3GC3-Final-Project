@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glut.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-//#include <GLUT/glut.h>
-//#include <OpenGL/OpenGL.h>
+//#include <GL/glut.h>
+//#include <GL/glu.h>
+//#include <GL/gl.h>
+#include <GLUT/glut.h>
+#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -433,6 +433,7 @@ void keyboard(unsigned char key, int x, int y)
         }
      else if(key == '1'){
          currentMaterial = 'r';
+         carSelect = false;
 		 //carSelect=false;
          
      }
@@ -1265,7 +1266,7 @@ GLubyte* LoadPPM(char* file, int* width, int* height, int* max)
 int main(int argc, char** argv)
 {
     int k;
-	image = LoadPPM("road.ppm", &width, &height, &k); //you can put whatever (ASCII) PPM file you want here
+	image = LoadPPM("/Users/Jason/Documents/Developer/3GC3 Final Project/General3DPlane/snail_a.ppm", &width, &height, &k); //you can put whatever (ASCII) PPM file you want here
     srand(time(0));
     
     glutInit(&argc, argv);		//starts up GLUT
