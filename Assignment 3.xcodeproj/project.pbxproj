@@ -13,6 +13,7 @@
 		966C2F631846808A006B0720 /* 3DMathLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966C2F5E1846808A006B0720 /* 3DMathLib.cpp */; };
 		966C2F641846808A006B0720 /* Assignment3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966C2F601846808A006B0720 /* Assignment3.cpp */; };
 		966C2F651846808A006B0720 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966C2F611846808A006B0720 /* Object.cpp */; };
+		96C5D0141863D43B00F6F4C7 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C5D0121863D43B00F6F4C7 /* Car.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,8 @@
 		966C2F601846808A006B0720 /* Assignment3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assignment3.cpp; sourceTree = "<group>"; };
 		966C2F611846808A006B0720 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		966C2F621846808A006B0720 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		96C5D0121863D43B00F6F4C7 /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
+		96C5D0131863D43B00F6F4C7 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				966C2F611846808A006B0720 /* Object.cpp */,
 				966C2F621846808A006B0720 /* Object.h */,
 				966C2F531846800C006B0720 /* General3DPlane.1 */,
+				96C5D0121863D43B00F6F4C7 /* Car.cpp */,
+				96C5D0131863D43B00F6F4C7 /* Car.h */,
 			);
 			path = General3DPlane;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			files = (
 				966C2F631846808A006B0720 /* 3DMathLib.cpp in Sources */,
 				966C2F651846808A006B0720 /* Object.cpp in Sources */,
+				96C5D0141863D43B00F6F4C7 /* Car.cpp in Sources */,
 				966C2F641846808A006B0720 /* Assignment3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

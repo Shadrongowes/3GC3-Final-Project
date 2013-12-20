@@ -5,16 +5,17 @@
 
 
 #include <stdlib.h>
-#include <GL/glut.h>	
-#include <GL/glu.h>			
-#include <GL/gl.h>
-//#include <GLUT/glut.h>
+//#include <GL/glut.h>
+//#include <GL/glu.h>
+//#include <GL/gl.h>
+#include <GLUT/glut.h>
 //#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
 #include <vector>
 #include "Object.h"
+#include "Car.h"
 #include <ctime>
 #include <time.h>
 
@@ -58,8 +59,8 @@ vec3D normalPlane(0,1,0);
 char itemToMake[]={'c','s','t','o','y'};
 char currentItem = 'c';
 int item = 1;
-
-
+bool carSelect = true;
+int carRotation = 0;
 
 
 //Lighting Values
@@ -139,11 +140,15 @@ materialStruct gold = {
 /*Generate the vector that stores all the particles. A vector was used because it is a dynamic datastructure that
 can be modified as we add particles*/
 
-std::vector<object> objects;
+std::vector<vehicle> cars;
+
+
+
 
 
 
 boundingBox standardBox(){
+    
     
     //initialize the norms for all of the planes
     
@@ -206,8 +211,8 @@ void notesToTheTA(void){
 
 void deselectAll(){
     
-    for(int i = 0; i<objects.size();i++){
-        objects[i].selected = false;
+    for(int i = 0; i<cars.size();i++){
+        cars[i].selected = false;
     }
 }
 
@@ -223,21 +228,21 @@ void timer(int id){
 
 void translateFunction(float x, float y, float z){
     
-    for(int i = 0;i<objects.size();i++){
-        if(objects[i].selected){
+    for(int i = 0;i<cars.size();i++){
+        if(cars[i].selected){
             
             vec3D trans(x,y,z);
             
-            objects[i].location = objects[i].location.shift(trans);
+            cars[i].location = cars[i].location.shift(trans);
             
             
             //shift all bounding boxes
-            objects[i].box.left.origin =  objects[i].box.left.origin.shift(trans);
-            objects[i].box.right.origin = objects[i].box.right.origin.shift(trans);
-            objects[i].box.top.origin =  objects[i].box.top.origin.shift(trans);
-            objects[i].box.bottom.origin = objects[i].box.bottom.origin.shift(trans);
-            objects[i].box.back.origin = objects[i].box.back.origin.shift(trans);
-            objects[i].box.front.origin = objects[i].box.front.origin.shift(trans);
+            cars[i].box.left.origin =  objects[i].box.left.origin.shift(trans);
+            cars[i].box.right.origin = objects[i].box.right.origin.shift(trans);
+            cars[i].box.top.origin =  objects[i].box.top.origin.shift(trans);
+            cars[i].box.bottom.origin = objects[i].box.bottom.origin.shift(trans);
+            cars[i].box.back.origin = objects[i].box.back.origin.shift(trans);
+            cars[i].box.front.origin = objects[i].box.front.origin.shift(trans);
             
       
         }
@@ -934,6 +939,164 @@ void isSelected(){
 
 
 
+void openingScreen(void){
+   
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0, 0, 0, 0);
+	//---------------------------------------------
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	glBindTexture(GL_TEXTURE_2D, texName);
+	glDisable(GL_TEXTURE_2D);
+    //-----------------------------------------------------------
+    carRotation++;
+    
+    glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+    glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
+    
+   
+    
+    glutKeyboardFunc(keyboard);
+    
+    glPushMatrix();
+    
+    glPushMatrix();
+    glTranslatef(10,0,0);
+    glRotatef(carRotation, 0, 1, 0);
+    glutSolidCube(2);
+    glPopMatrix();
+    
+    
+    glPushMatrix();
+    glTranslatef(-10,0,0);
+    glRotatef(carRotation, 0, 1, 0);
+    glutSolidCube(2);
+    glPopMatrix();
+    
+    
+    glPushMatrix();
+    glTranslatef(0,0,0);
+    glRotatef(carRotation, 0, 1, 0);
+    glutSolidCube(2);
+    glPopMatrix();
+  
+    glPopMatrix();
+    
+    
+    
+    for(int i = 0; i<objects.size();i++){
+        glPushMatrix();
+        glTranslatef(objects[i].location.x,objects[i].location.y , objects[i].location.z);
+        glPushMatrix();
+        glScalef(objects[i].scaleX,objects[i].scaleY,objects[i].scaleZ);
+        
+        
+        
+        if(objects[i].selected){
+            setMaterial('w');
+            glutWireCube(objects[i].scaleX*2);
+            objects[i].shape = currentItem;
+            setMaterial(currentMaterial);
+            objects[i].material = currentMaterial;
+            
+        }
+        else{
+            setMaterial(objects[i].material);
+            
+        }
+        
+        
+        
+        
+        //Used to switch the current targets shape a switch command was used to be able to easily change
+        //Shapes
+        
+        
+        
+        if(objects[i].selected){
+            
+            
+            
+            switch(currentItem)
+            {
+                case 'c':
+                    glutSolidCube(objects[i].scaleX);
+                    
+                    break;
+                    
+                case 's':
+                    glutSolidSphere(objects[i].scaleX/2,20,20);
+                    break;
+                    
+                case 't':
+                    glutSolidTeapot(objects[i].scaleX);
+                    break;
+                    
+                case 'o':
+                    glutSolidCone(objects[i].scaleX, objects[i].scaleX, 12, 12);
+                    break;
+                    
+                case 'y':
+                    glutSolidTorus(objects[i].scaleX/2, objects[i].scaleX, 10, 12);
+                    
+                    break;
+                    
+                    
+            }
+            
+            
+        }
+        
+        else{
+            switch(objects[i].shape)
+            {
+                case 'c':
+                    glutSolidCube(objects[i].scaleX);
+                    break;
+                    
+                case 's':
+                    glutSolidSphere(objects[i].scaleX/2,20,20);
+                    break;
+                    
+                case 't':
+                    glutSolidTeapot(objects[i].scaleX);
+                    break;
+                    
+                case 'o':
+                    glutSolidCone(objects[i].scaleX, objects[i].scaleX, 12, 12);
+                    break;
+                    
+                case 'y':
+                    glutSolidTorus(objects[i].scaleX/2, objects[i].scaleX, 10, 12);
+                    break;
+                    
+                    
+            }
+            
+        }
+        
+        
+        
+        glPopMatrix();
+        glPopMatrix();
+    }
+    
+    
+    
+    
+    
+    
+    
+    //The timerFunc is set to redisplay every 5ms
+    
+	glutSwapBuffers();
+    glutTimerFunc(20,timer,0);
+    
+    
+}
 
 
 
@@ -1117,10 +1280,12 @@ int main(int argc, char** argv)
  
 
     
-    
-
+    if(carSelect){
+        glutDisplayFunc(openingScreen);	//registers "display" as the display callback function
+    }
+    else{
 	glutDisplayFunc(display);	//registers "display" as the display callback function
-	
+	}
 
     glutIdleFunc(idle);
     
