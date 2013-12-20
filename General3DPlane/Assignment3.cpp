@@ -3,12 +3,12 @@
  3GC3 Assignment 3
  */
 
-
+#include <stdio.h>
 #include <stdlib.h>
-//#include <GL/glut.h>
-//#include <GL/glu.h>
-//#include <GL/gl.h>
-#include <GLUT/glut.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+//#include <GLUT/glut.h>
 //#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
@@ -23,6 +23,12 @@
 #define checkImageHeight 64
 static GLubyte checkImage[checkImageHeight][checkImageWidth][4];
 
+int width = 0;
+int height = 0;
+
+
+GLubyte *image;
+
 static GLuint texName;
 
 void makeCheckImage(void)
@@ -31,7 +37,7 @@ void makeCheckImage(void)
     
    for (i = 0; i < checkImageHeight; i++) {
       for (j = 0; j < checkImageWidth; j++) {
-         c = ((((i&0x8)==0)^((j&0x8))==0))*255;
+         c = ((((i)==0)^((j))==0))*255;//   c = ((((i&0x8)==0)^((j&0x8))==0))*255;
          checkImage[i][j][0] = (GLubyte) c;
          checkImage[i][j][1] = (GLubyte) c;
          checkImage[i][j][2] = (GLubyte) c;
@@ -427,6 +433,7 @@ void keyboard(unsigned char key, int x, int y)
         }
      else if(key == '1'){
          currentMaterial = 'r';
+		 //carSelect=false;
          
      }
     
@@ -1045,6 +1052,11 @@ if(carSelect){
 	glTexCoord2f(1.0, 1.0); glVertex4f(2.41421, 1.0, -1.41421);
 	glTexCoord2f(1.0, 0.0); glVertex4f(2.41421, -1.0, -1.41421);*/
 	glEnd();
+
+
+	glPixelZoom(-1, 1);
+	glDrawPixels(width,height,GL_RGB, GL_UNSIGNED_BYTE, image);
+
 	glFlush();
 	glDisable(GL_TEXTURE_2D);
    //-----------------------------------------------------------
@@ -1157,11 +1169,7 @@ if(carSelect){
         glPopMatrix();
     }
     
-    
-    
-    
-    
-    
+
     
     //The timerFunc is set to redisplay every 5ms
     
@@ -1184,9 +1192,80 @@ void reshape(int w, int h)
 }
 //--------------------------------------------
 
+GLubyte* LoadPPM(char* file, int* width, int* height, int* max)
+{
+	GLubyte* img;
+	FILE *fd;
+	int n, m;
+	int  k, size;
+	char c;
+	int i;
+	char b[100];
+	float s;
+	int red, green, blue;
+	
+	//open the file in read mode
+	fd = fopen(file, "r");
+
+	//scan everything up to newline
+	fscanf(fd,"%[^\n] ",b);
+
+	//check if the first two characters are not P3, if not, it's not an ASCII PPM file
+	if(b[0]!='P'|| b[1] != '3')
+	{
+		printf("%s is not a PPM file!\n",file); 
+		exit(0);
+	}
+
+	printf("%s is a PPM file\n", file);
+
+	//read past the file comments: scan for lines that begin 
+	//  with #, and keep going until you find no more
+	fscanf(fd, "%c",&c);
+	while(c == '#') 
+	{
+		fscanf(fd, "%[^\n] ", b);
+		printf("%s\n",b);
+		fscanf(fd, "%c",&c);
+	}
+
+	//rewind the read pointer one character, or we'll lose the size
+	ungetc(c,fd); 
+
+	//read the rows, columns and max colour values
+	fscanf(fd, "%d %d %d", &n, &m, &k);
+
+	printf("%d rows  %d columns  max value= %d\n",n,m,k);
+
+	//number of pixels is rows * columns
+	size = n*m;
+
+	//allocate memory to store 3 GLuints for every pixel
+	img =  (GLubyte *)malloc(3*sizeof(GLuint)*size);
+
+	//scale the colour in case maxCol is not 255
+	s=255.0/k;
+
+	//start reading pixel colour data
+	for(i=0;i<size;i++) 
+	{
+		fscanf(fd,"%d %d %d",&red, &green, &blue );
+		img[3*size-3*i-3]=red*s;
+		img[3*size-3*i-2]=green*s;
+		img[3*size-3*i-1]=blue*s;
+	}
+
+	*width = n;
+	*height = m;
+	*max = k;
+
+	return img;
+}
+
 int main(int argc, char** argv)
 {
-    
+    int k;
+	image = LoadPPM("road.ppm", &width, &height, &k); //you can put whatever (ASCII) PPM file you want here
     srand(time(0));
     
     glutInit(&argc, argv);		//starts up GLUT
