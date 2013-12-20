@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <GL/glut.h>
-//#include <GL/glu.h>
-//#include <GL/gl.h>
-#include <GLUT/glut.h>
-#include <OpenGL/OpenGL.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+//#include <GLUT/glut.h>
+//#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -339,7 +339,7 @@ void drawTrafficLight(float size, GLfloat topEmissive[], GLfloat middleEmissive[
 
 void notesToTheTA(void){
     
-    printf("Use MOUSE to CLick cars Press a to add your first object\n-------------------------------------------\nup= Camera Pan +Z\ndown= Camera Pan -Z\nleft= Camera Pan -X\nright= Camera Pan +X\nF1= Camera Pan +Y\nF2= Camera Pan -Y\nq to quit\nr = Reset\ny=translation up\nalt+y=translation down\nx=translation right\nalt+x=translation left\n\nz=translation forwards\nalt+z=translation into the screen\n\n-------------------------------------------\nScaling\ni=positive x\nalt+i = negative x\nj=positive y\nalt+j = negative y\n\nk=positive z\nalt+k = negative z\n\nChange Material colours numbers 1-5\n Change Shape od selected object SPACE BAR\n-------------------------------------------\n6= light Pan +X\n7= Light Pan -X\n8= Light Pan -Y\n9= Light Pan +Y\n0= Light Pan +Z\n-= Camera Pan -Z\n)");}
+    printf("--------------------------- Car Selection -\nClick the mouse to select a car\nHit ENTER to confirm\nLeft/right = Camera Pan X\nUp/down = Camera Pan Y\nF1/F2 = Camera Pan Z\nQ = Quit\n----------------------- Race Instructions -\nMouse = Direct Car\nW = Drive\nS = Reverse\nA = Left\nD = Right\nR = Reset\nQ = Quit\n)");}
 
 
 
