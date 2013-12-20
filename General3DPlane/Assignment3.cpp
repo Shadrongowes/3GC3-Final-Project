@@ -643,40 +643,40 @@ void drawRoom(){
     
     
     
-    glVertex3f(80, -3, -80 );
-    glVertex3f(80, -3, 80 );
-    glVertex3f(-80,-3, 80 );
-    glVertex3f(-80, -3, -80 );
+   glVertex3f(500, -3, -500 );
+    glVertex3f(500, -3, 500 );
+    glVertex3f(-500,-3, 500 );
+    glVertex3f(-500, -3, -500 );
     
     glEnd();
     
    glNormal3f(-0.707, 0, 0);
     glBegin(GL_QUADS);
     
-    glVertex3f(80,5,-80);
-    glVertex3f(80,-3,-80);
-    glVertex3f(80,-3,80);
-    glVertex3f(80,5,80);
+    glVertex3f(500,5,-500);
+    glVertex3f(500,-3,-500);
+    glVertex3f(500,-3,500);
+    glVertex3f(500,5,500);
     glEnd();
     
     glNormal3f(0.707, 0, 0);
     
     glBegin(GL_QUADS);
     
-    glVertex3f(-80,5,-80);
-    glVertex3f(-80,-3,-80);
-    glVertex3f(-80,-3,80);
-    glVertex3f(-80,5,80);
+    glVertex3f(-500,5,-500);
+    glVertex3f(-500,-3,-500);
+    glVertex3f(-500,-3,500);
+    glVertex3f(-500,5,500);
     glEnd();
     
     glNormal3f(0, 0, 0.707);
     
     glBegin(GL_QUADS);
     
-    glVertex3f(80,5,-80);
-    glVertex3f(80,-3,-80);
-    glVertex3f(-80,-3,-80);
-    glVertex3f(-80,5,-80);
+    glVertex3f(500,5,-500);
+    glVertex3f(500,-3,-500);
+    glVertex3f(-500,-3,-500);
+    glVertex3f(-500,5,-500);
     glEnd();
 }
 
@@ -1108,10 +1108,10 @@ void display(void){
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 	glBindTexture(GL_TEXTURE_2D, texName);
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0, 0.0); glVertex3f(8, -2.5, -8);
-	glTexCoord2f(0.0, 1.0); glVertex3f(8, -2.5, 8);
-	glTexCoord2f(1.0, 1.0); glVertex3f(-8,-2.5, 8 );
-	glTexCoord2f(1.0, 0.0); glVertex3f(-8, -2.5, -8 );
+	glTexCoord2f(0.0, 0.0); glVertex3f(500, -2.5, -100); //8+72=80,
+	glTexCoord2f(0.0, 1.0); glVertex3f(500, -2.5, 100);
+	glTexCoord2f(1.0, 1.0); glVertex3f(340,-2.5, 100 );//-8+72
+	glTexCoord2f(1.0, 0.0); glVertex3f(340, -2.5, -100 );
 
 	/*glTexCoord2f(0.0, 0.0); glVertex4f(1.0, -1.0, 0.0);
 	glTexCoord2f(0.0, 1.0); glVertex4f(1.0, 1.0, 0.0);
