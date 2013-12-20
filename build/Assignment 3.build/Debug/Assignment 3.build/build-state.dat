@@ -219,9 +219,9 @@ t1385970129
 s2001
 
 N/Users/Jason/Documents/Developer/3GC3 Final Project/General3DPlane/Assignment3.cpp
-c0000000052B3CB750000000000007953
-t1387514741
-s31059
+c0000000052B3CCDC0000000000007D5F
+t1387515100
+s32095
 
 N/Users/Jason/Documents/Developer/3GC3 Final Project/General3DPlane/Car.cpp
 c0000000052B3A3CE0000000000000295
@@ -253,7 +253,7 @@ t1387503461
 s537
 
 N/Users/Jason/Documents/Developer/3GC3 Final Project/build/Assignment 3.build/Debug/Assignment 3.build/Objects-normal/x86_64/Assignment3.o
-t1387514742
+t1387515100
 s136636
 
 N/Users/Jason/Documents/Developer/3GC3 Final Project/build/Assignment 3.build/Debug/Assignment 3.build/Objects-normal/x86_64/Car.o
@@ -265,7 +265,7 @@ t1385982449
 s6560
 
 N/Users/Jason/Documents/Developer/3GC3 Final Project/build/Debug/Assignment 3
-t1387514742
+t1387515100
 s67920
 
 N/Users/Jason/Documents/Developer/General3DPlane/General3DPlane/3DMathLib.cpp
@@ -337,7 +337,7 @@ r0
 
 CCheck dependencies
 r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies6537e74a0464b841^4085e74a0464b841^---0#1#1#--18"Check dependencies36"5C9CDBD5-763C-416A-B9BB-2BA2A6E69F8E-
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies34f695700464b841^359896700464b841^---0#1#1#--18"Check dependencies36"C1D131CB-74C6-4C75-89AA-D97432815ADA-
 
 CCompileC build/Assignment\ 3.build/Debug/Assignment\ 3.build/Objects-normal/x86_64/3DMathLib.o /Users/Jason/Documents/Developer/3GC3\ Final\ Project/General3DPlane/3DMathLib.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 r0
