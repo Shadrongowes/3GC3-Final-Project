@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <GL/glut.h>
-//#include <GL/glu.h>
-//#include <GL/gl.h>
-#include <GLUT/glut.h>
-#include <OpenGL/OpenGL.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+//#include <GLUT/glut.h>
+//#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -39,6 +39,8 @@ bool moving = true;
 bool gameComplete = false;
 bool winner = false;
 int count = 0;
+int trafficTimer = 0;
+int traffic = 0;
 
 //used to add slow down effect on grass
 int friction=0;
@@ -342,7 +344,7 @@ void drawTrafficLight(float size, GLfloat topEmissive[], GLfloat middleEmissive[
 
 void notesToTheTA(void){
     
-    printf("Use MOUSE to CLick cars Press a to add your first object\n-------------------------------------------\nup= Camera Pan +Z\ndown= Camera Pan -Z\nleft= Camera Pan -X\nright= Camera Pan +X\nF1= Camera Pan +Y\nF2= Camera Pan -Y\nq to quit\nr = Reset\ny=translation up\nalt+y=translation down\nx=translation right\nalt+x=translation left\n\nz=translation forwards\nalt+z=translation into the screen\n\n-------------------------------------------\nScaling\ni=positive x\nalt+i = negative x\nj=positive y\nalt+j = negative y\n\nk=positive z\nalt+k = negative z\n\nChange Material colours numbers 1-5\n Change Shape od selected object SPACE BAR\n-------------------------------------------\n6= light Pan +X\n7= Light Pan -X\n8= Light Pan -Y\n9= Light Pan +Y\n0= Light Pan +Z\n-= Camera Pan -Z\n)");}
+    printf("--------------------------- Car Selection -\nClick the mouse to select a car\nHit ENTER to confirm\nLeft/right = Camera Pan X\nUp/down = Camera Pan Y\nF1/F2 = Camera Pan Z\nQ = Quit\n----------------------- Race Instructions -\nMouse = Direct Car\nW = Drive\nS = Reverse\nA = Left\nD = Right\nR = Reset\nQ = Quit\n)");}
 
 
 
@@ -1244,6 +1246,8 @@ void gameCheck(){
     
     if ((myCar.location.z<-482.3) ||(cars[2].location.z<(-482.3-30)) ){
         gameComplete = true;
+
+		trafficTimer = 0;
         
         if (myCar.location.z<cars[2].location.z+30) {
             winner = true;
@@ -1253,7 +1257,11 @@ void gameCheck(){
             
             winner = false;
          
+<<<<<<< HEAD
             
+=======
+          
+>>>>>>> ed132a2b61339bd39932a7937afe7e95820d194c
             
         }
         
@@ -1406,7 +1414,20 @@ if(carSelect){
     else{
         
 
-       
+    trafficTimer++;   
+
+	if (trafficTimer < 100) {
+		traffic = 0;
+	}
+	if (100 <= trafficTimer < 200) {
+		traffic = 1;
+	}
+	if (200 <= trafficTimer < 300) {
+		traffic = 2;
+	}
+	else {
+		traffic = 3;
+	}
         
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(135/255., 206/255., 250/255., 1);
@@ -1469,11 +1490,23 @@ if(carSelect){
         opponentCar();
         
         drawEnvironment();
-       
+       printf("%d",traffic);
         
         glPushMatrix();
 		glTranslatef(0.0, 5.0, -2.5);
-		drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
+		if (traffic == 0) {
+			drawTrafficLight(2, blackPlastic.emission, blackPlastic.emission, blackPlastic.emission);
+			
+		}
+		else if (traffic == 1) {
+			drawTrafficLight(2, redLight_emissive, blackPlastic.emission, blackPlastic.emission);
+		}
+		else if (traffic == 2) {
+			drawTrafficLight(2, redLight_emissive, orangeLight_emissive, blackPlastic.emission);
+		}
+		else {
+			drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
+		}
         glPopMatrix();
     }
     
@@ -1484,7 +1517,11 @@ if(carSelect){
 
 	glutSwapBuffers();
     glutTimerFunc(5,timer,0);
+<<<<<<< HEAD
          printf("%f,\n%f",cars[2].location.x,myCar.location.x);
+=======
+        
+>>>>>>> ed132a2b61339bd39932a7937afe7e95820d194c
     }
     
     
