@@ -10,13 +10,13 @@
 #include "3DMathLib.h"
 
 
-vehicle::vehicle(){
+car::car(){
     
 }
 /*The particle class was created to keep track of the attributes each particle has in the system
  */
 
-vehicle::vehicle(point3D inPoint,char inShape,float xScale,float yScale,float zScale,char inMaterial,boundingBox inBoundingBox,bool isSelected){
+car::car(point3D inPoint,char inShape,float xScale,float yScale,float zScale,char inMaterial,boundingBox inBoundingBox,bool isSelected){
     location = inPoint;
     scaleX = xScale;
     scaleY = yScale;

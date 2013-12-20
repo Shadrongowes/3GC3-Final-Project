@@ -15,9 +15,9 @@
 #include <iostream>
 #include <vector>
 #include "Object.h"
-#include "Car.h"
 #include <ctime>
 #include <time.h>
+#include "Car.h"
 
 #define checkImageWidth 64
 #define checkImageHeight 64
@@ -140,15 +140,11 @@ materialStruct gold = {
 /*Generate the vector that stores all the particles. A vector was used because it is a dynamic datastructure that
 can be modified as we add particles*/
 
-std::vector<vehicle> cars;
-
-
-
+std::vector<object> cars;
 
 
 
 boundingBox standardBox(){
-    
     
     //initialize the norms for all of the planes
     
@@ -205,7 +201,7 @@ object createObject(){
 
 void notesToTheTA(void){
     
-    printf("Use MOUSE to CLick objects Press a to add your first object\n-------------------------------------------\nup= Camera Pan +Z\ndown= Camera Pan -Z\nleft= Camera Pan -X\nright= Camera Pan +X\nF1= Camera Pan +Y\nF2= Camera Pan -Y\nq to quit\nr = Reset\ny=translation up\nalt+y=translation down\nx=translation right\nalt+x=translation left\n\nz=translation forwards\nalt+z=translation into the screen\n\n-------------------------------------------\nScaling\ni=positive x\nalt+i = negative x\nj=positive y\nalt+j = negative y\n\nk=positive z\nalt+k = negative z\n\nChange Material colours numbers 1-5\n Change Shape od selected object SPACE BAR\n-------------------------------------------\n6= light Pan +X\n7= Light Pan -X\n8= Light Pan -Y\n9= Light Pan +Y\n0= Light Pan +Z\n-= Camera Pan -Z\n)");}
+    printf("Use MOUSE to CLick cars Press a to add your first object\n-------------------------------------------\nup= Camera Pan +Z\ndown= Camera Pan -Z\nleft= Camera Pan -X\nright= Camera Pan +X\nF1= Camera Pan +Y\nF2= Camera Pan -Y\nq to quit\nr = Reset\ny=translation up\nalt+y=translation down\nx=translation right\nalt+x=translation left\n\nz=translation forwards\nalt+z=translation into the screen\n\n-------------------------------------------\nScaling\ni=positive x\nalt+i = negative x\nj=positive y\nalt+j = negative y\n\nk=positive z\nalt+k = negative z\n\nChange Material colours numbers 1-5\n Change Shape od selected object SPACE BAR\n-------------------------------------------\n6= light Pan +X\n7= Light Pan -X\n8= Light Pan -Y\n9= Light Pan +Y\n0= Light Pan +Z\n-= Camera Pan -Z\n)");}
 
 
 
@@ -237,12 +233,12 @@ void translateFunction(float x, float y, float z){
             
             
             //shift all bounding boxes
-            cars[i].box.left.origin =  objects[i].box.left.origin.shift(trans);
-            cars[i].box.right.origin = objects[i].box.right.origin.shift(trans);
-            cars[i].box.top.origin =  objects[i].box.top.origin.shift(trans);
-            cars[i].box.bottom.origin = objects[i].box.bottom.origin.shift(trans);
-            cars[i].box.back.origin = objects[i].box.back.origin.shift(trans);
-            cars[i].box.front.origin = objects[i].box.front.origin.shift(trans);
+            cars[i].box.left.origin =  cars[i].box.left.origin.shift(trans);
+            cars[i].box.right.origin = cars[i].box.right.origin.shift(trans);
+            cars[i].box.top.origin =  cars[i].box.top.origin.shift(trans);
+            cars[i].box.bottom.origin = cars[i].box.bottom.origin.shift(trans);
+            cars[i].box.back.origin = cars[i].box.back.origin.shift(trans);
+            cars[i].box.front.origin = cars[i].box.front.origin.shift(trans);
             
       
         }
@@ -252,12 +248,12 @@ void translateFunction(float x, float y, float z){
 }
 void scaleFunction(float x, float y, float z){
     
-    for(int i = 0;i<objects.size();i++){
-        if(objects[i].selected){
+    for(int i = 0;i<cars.size();i++){
+        if(cars[i].selected){
             
-             objects[i].scaleX = objects[i].scaleX+x;
-             objects[i].scaleY = objects[i].scaleY+y;
-             objects[i].scaleZ = objects[i].scaleZ+z;
+             cars[i].scaleX = cars[i].scaleX+x;
+             cars[i].scaleY = cars[i].scaleY+y;
+             cars[i].scaleZ = cars[i].scaleZ+z;
             
             
             
@@ -266,17 +262,17 @@ void scaleFunction(float x, float y, float z){
             //This value is then multiplied by half the scaling factor to increase the bounding box size
             
             
-            objects[i].box.left.origin = objects[i].location.shift(createVector(objects[i].location, objects[i].box.left.origin).scalarMultiply(1+x));
+            cars[i].box.left.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.left.origin).scalarMultiply(1+x));
             
-            objects[i].box.right.origin = objects[i].location.shift(createVector(objects[i].location, objects[i].box.right.origin).scalarMultiply(1+x));
+            cars[i].box.right.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.right.origin).scalarMultiply(1+x));
             
-            objects[i].box.bottom.origin = objects[i].location.shift(createVector(objects[i].location, objects[i].box.bottom.origin).scalarMultiply(1+y));
+            cars[i].box.bottom.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.bottom.origin).scalarMultiply(1+y));
             
-            objects[i].box.top.origin = objects[i].location.shift(createVector(objects[i].location, objects[i].box.top.origin).scalarMultiply(1+y));
+            cars[i].box.top.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.top.origin).scalarMultiply(1+y));
             
-            objects[i].box.front.origin = objects[i].location.shift(createVector(objects[i].location, objects[i].box.front.origin).scalarMultiply(1+z));
+            cars[i].box.front.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.front.origin).scalarMultiply(1+z));
             
-            objects[i].box.back.origin = objects[i].location.shift(createVector(objects[i].location, objects[i].box.back.origin).scalarMultiply(1+z));
+            cars[i].box.back.origin = cars[i].location.shift(createVector(cars[i].location, cars[i].box.back.origin).scalarMultiply(1+z));
             
         
         }
@@ -295,10 +291,10 @@ void rotationRunction(float x,float y, float z,float angle){
 
 
 
-void clearObjects(object object1,int i){
+void clearcars(object object1,int i){
     
     
-    objects.erase(objects.begin()+i);
+    cars.erase(cars.begin()+i);
     
     
 }
@@ -309,9 +305,9 @@ void clearObjects(object object1,int i){
 
 
 void reset(){
-    for(int i = 0; i<objects.size();i++){
+    for(int i = 0; i<cars.size();i++){
         
-        clearObjects(objects[i], i);
+        clearcars(cars[i], i);
         
     
     //reinitialize global variables
@@ -360,7 +356,7 @@ void keyboard(unsigned char key, int x, int y)
     else if(key=='a'){
             deselectAll();
             object newObj = createObject();
-            objects.push_back(newObj);
+            cars.push_back(newObj);
         }
     else if(key=='x'){
         
@@ -424,7 +420,7 @@ void keyboard(unsigned char key, int x, int y)
             }
         }
      else if(key == 'r'){
-         while (objects.size()>0){
+         while (cars.size()>0){
          reset();
         
          }
@@ -879,34 +875,34 @@ void mouse(int btn, int state, int x, int y){
     {
        
         
-        //Checks to see if there are any intersections with the resulting planes of the objects
+        //Checks to see if there are any intersections with the resulting planes of the cars
         deselectAll();
         
-        for(int i = 0;i<objects.size();i++){
+        for(int i = 0;i<cars.size();i++){
             
             
-            if(intersectObject(objects[i], ray1)){
+            if(intersectObject(cars[i], ray1)){
                 
-                objects[i].selected =true;
+                cars[i].selected =true;
                 
                 }
             
             else{
-                    objects[i].selected =false;
+                    cars[i].selected =false;
                 
            }
        }
     }
     
     
-    else if(btn == GLUT_RIGHT_BUTTON && objects.size()>=1){
+    else if(btn == GLUT_RIGHT_BUTTON && cars.size()>=1){
         
         
         
-        for(int i = 0;i<objects.size();i++){
+        for(int i = 0;i<cars.size();i++){
             
-            if(intersectObject(objects[i], ray1)){
-                objects.erase(objects.begin()+i);
+            if(intersectObject(cars[i], ray1)){
+                cars.erase(cars.begin()+i);
                 
             }
             
@@ -930,14 +926,18 @@ void mouse(int btn, int state, int x, int y){
 
 void isSelected(){
     
-    for(int i =0;i<objects.size();i++){
+    for(int i =0;i<cars.size();i++){
  
     
     
     }
 }
 
-
+void createCars(){
+    
+    object newObj = createObject();
+    cars.push_back(newObj);
+}
 
 void openingScreen(void){
    
@@ -987,24 +987,24 @@ void openingScreen(void){
     
     
     
-    for(int i = 0; i<objects.size();i++){
+    for(int i = 0; i<cars.size();i++){
         glPushMatrix();
-        glTranslatef(objects[i].location.x,objects[i].location.y , objects[i].location.z);
+        glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
         glPushMatrix();
-        glScalef(objects[i].scaleX,objects[i].scaleY,objects[i].scaleZ);
+        glScalef(cars[i].scaleX,cars[i].scaleY,cars[i].scaleZ);
         
         
         
-        if(objects[i].selected){
+        if(cars[i].selected){
             setMaterial('w');
-            glutWireCube(objects[i].scaleX*2);
-            objects[i].shape = currentItem;
+            glutWireCube(cars[i].scaleX*2);
+            cars[i].shape = currentItem;
             setMaterial(currentMaterial);
-            objects[i].material = currentMaterial;
+            cars[i].material = currentMaterial;
             
         }
         else{
-            setMaterial(objects[i].material);
+            setMaterial(cars[i].material);
             
         }
         
@@ -1016,31 +1016,31 @@ void openingScreen(void){
         
         
         
-        if(objects[i].selected){
+        if(cars[i].selected){
             
             
             
             switch(currentItem)
             {
                 case 'c':
-                    glutSolidCube(objects[i].scaleX);
+                    glutSolidCube(cars[i].scaleX);
                     
                     break;
                     
                 case 's':
-                    glutSolidSphere(objects[i].scaleX/2,20,20);
+                    glutSolidSphere(cars[i].scaleX/2,20,20);
                     break;
                     
                 case 't':
-                    glutSolidTeapot(objects[i].scaleX);
+                    glutSolidTeapot(cars[i].scaleX);
                     break;
                     
                 case 'o':
-                    glutSolidCone(objects[i].scaleX, objects[i].scaleX, 12, 12);
+                    glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
                     break;
                     
                 case 'y':
-                    glutSolidTorus(objects[i].scaleX/2, objects[i].scaleX, 10, 12);
+                    glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
                     
                     break;
                     
@@ -1051,26 +1051,26 @@ void openingScreen(void){
         }
         
         else{
-            switch(objects[i].shape)
+            switch(cars[i].shape)
             {
                 case 'c':
-                    glutSolidCube(objects[i].scaleX);
+                    glutSolidCube(cars[i].scaleX);
                     break;
                     
                 case 's':
-                    glutSolidSphere(objects[i].scaleX/2,20,20);
+                    glutSolidSphere(cars[i].scaleX/2,20,20);
                     break;
                     
                 case 't':
-                    glutSolidTeapot(objects[i].scaleX);
+                    glutSolidTeapot(cars[i].scaleX);
                     break;
                     
                 case 'o':
-                    glutSolidCone(objects[i].scaleX, objects[i].scaleX, 12, 12);
+                    glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
                     break;
                     
                 case 'y':
-                    glutSolidTorus(objects[i].scaleX/2, objects[i].scaleX, 10, 12);
+                    glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
                     break;
                     
                     
@@ -1133,24 +1133,24 @@ void display(void){
     
     glutKeyboardFunc(keyboard);
     
-    for(int i = 0; i<objects.size();i++){
+    for(int i = 0; i<cars.size();i++){
         glPushMatrix();
-        glTranslatef(objects[i].location.x,objects[i].location.y , objects[i].location.z);
+        glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
         glPushMatrix();
-        glScalef(objects[i].scaleX,objects[i].scaleY,objects[i].scaleZ);
+        glScalef(cars[i].scaleX,cars[i].scaleY,cars[i].scaleZ);
         
             
             
-            if(objects[i].selected){
+            if(cars[i].selected){
                 setMaterial('w');
-                glutWireCube(objects[i].scaleX*2);
-                objects[i].shape = currentItem;
+                glutWireCube(cars[i].scaleX*2);
+                cars[i].shape = currentItem;
                 setMaterial(currentMaterial);
-                objects[i].material = currentMaterial;
+                cars[i].material = currentMaterial;
                 
             }
             else{
-                setMaterial(objects[i].material);
+                setMaterial(cars[i].material);
                 
             }
         
@@ -1162,31 +1162,31 @@ void display(void){
         
         
         
-        if(objects[i].selected){
+        if(cars[i].selected){
             
 
            
             switch(currentItem)
             {
                 case 'c':
-                    glutSolidCube(objects[i].scaleX);
+                    glutSolidCube(cars[i].scaleX);
                     
                     break;
                     
                 case 's':
-                    glutSolidSphere(objects[i].scaleX/2,20,20);
+                    glutSolidSphere(cars[i].scaleX/2,20,20);
                     break;
                     
                 case 't':
-                    glutSolidTeapot(objects[i].scaleX);
+                    glutSolidTeapot(cars[i].scaleX);
                     break;
                     
                 case 'o':
-                    glutSolidCone(objects[i].scaleX, objects[i].scaleX, 12, 12);
+                    glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
                     break;
                     
                 case 'y':
-                    glutSolidTorus(objects[i].scaleX/2, objects[i].scaleX, 10, 12);
+                    glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
                     
                     break;
                     
@@ -1197,26 +1197,26 @@ void display(void){
         }
         
         else{
-        switch(objects[i].shape)
+        switch(cars[i].shape)
         {
             case 'c':
-                glutSolidCube(objects[i].scaleX);
+                glutSolidCube(cars[i].scaleX);
                 break;
                 
             case 's':
-                glutSolidSphere(objects[i].scaleX/2,20,20);
+                glutSolidSphere(cars[i].scaleX/2,20,20);
                 break;
                 
             case 't':
-                glutSolidTeapot(objects[i].scaleX);
+                glutSolidTeapot(cars[i].scaleX);
                 break;
                 
             case 'o':
-                glutSolidCone(objects[i].scaleX, objects[i].scaleX, 12, 12);
+                glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
                 break;
                 
             case 'y':
-               glutSolidTorus(objects[i].scaleX/2, objects[i].scaleX, 10, 12);
+               glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
                 break;
                 
 

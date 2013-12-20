@@ -79,12 +79,12 @@
 			children = (
 				966C2F5E1846808A006B0720 /* 3DMathLib.cpp */,
 				966C2F5F1846808A006B0720 /* 3DMathLib.h */,
-				966C2F601846808A006B0720 /* Assignment3.cpp */,
 				966C2F611846808A006B0720 /* Object.cpp */,
 				966C2F621846808A006B0720 /* Object.h */,
 				966C2F531846800C006B0720 /* General3DPlane.1 */,
 				96C5D0121863D43B00F6F4C7 /* Car.cpp */,
 				96C5D0131863D43B00F6F4C7 /* Car.h */,
+				966C2F601846808A006B0720 /* Assignment3.cpp */,
 			);
 			path = General3DPlane;
 			sourceTree = "<group>";

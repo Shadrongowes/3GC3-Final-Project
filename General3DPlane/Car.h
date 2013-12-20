@@ -14,11 +14,11 @@
 
 
 
-class vehicle
+class car
 {
 public:
-    vehicle();
-    vehicle(point3D inPoint,char inShape,float xScale,float yScale,float zScale,char inMaterial,boundingBox inBoundingBox,bool isSelected);
+    car();
+    car(point3D inPoint,char inShape,float xScale,float yScale,float zScale,char inMaterial,boundingBox inBoundingBox,bool isSelected);
     float size;
     point3D location;
     float scaleX;
