@@ -18,6 +18,8 @@
 #include <ctime>
 #include <time.h>
 #include "Car.h"
+#include <string.h>
+
 
 //Global Variables
 
@@ -326,9 +328,32 @@ void reset(){
     
 }
 
+//------------------------------------------------------------------------
+void drawBitmapText(char *string, float x, float y, float z)
+{
+    char *c;
+    glRasterPos3f(x, y, z);
 
+    for (c=string; *c != '\0'; c++)
+    {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, *c);
+    }
+}
 
+void drawStrokeText(char*string, int x, int y, int z)
+{
+    char *c;
+    glPushMatrix();
+    glTranslatef(x, y+8, z);
 
+    for (c=string; *c != '\0'; c++)
+    {
+        glutStrokeCharacter(GLUT_STROKE_ROMAN, *c);
+    }
+    glPopMatrix();
+}
+
+//-------------------------------------------------------------------------
 
 
 //All keyboard controls
@@ -964,6 +989,7 @@ void display(void){
     
 if(carSelect){
         
+		drawBitmapText("Hello world",0,0,0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0, 0, 0, 0);
         //---------------------------------------------
@@ -1028,15 +1054,27 @@ if(carSelect){
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 	glBindTexture(GL_TEXTURE_2D, texName);
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0, 0.0); glVertex3f(-100,-2.5, 500); //8+72=80,
-	glTexCoord2f(0.0, 1.0); glVertex3f(100,-2.5, 500);
-	glTexCoord2f(1.0, 1.0); glVertex3f(100,-2.5, 340 );//-8+72
-	glTexCoord2f(1.0, 0.0); glVertex3f(-100,-2.5,340);
+	glTexCoord2f(0.0, 0.0); glVertex3f(-15,-2.5, -500); //8+72=80,
+	glTexCoord2f(0.0, 1.0); glVertex3f(15,-2.5, -500);
+	glTexCoord2f(1.0, 1.0); glVertex3f(15,-2.5, -485 );//-8+72
+	glTexCoord2f(1.0, 0.0); glVertex3f(-15,-2.5,-485);
 
 	/*glTexCoord2f(0.0, 0.0); glVertex4f(1.0, -1.0, 0.0);
 	glTexCoord2f(0.0, 1.0); glVertex4f(1.0, 1.0, 0.0);
 	glTexCoord2f(1.0, 1.0); glVertex4f(2.41421, 1.0, -1.41421);
 	glTexCoord2f(1.0, 0.0); glVertex4f(2.41421, -1.0, -1.41421);*/
+	glEnd();
+
+	//glBindTexture(GL_TEXTURE_2D, texture name goes here);
+	glBegin(GL_QUADS);
+	//glTexCoord2f(0.0, 0.0); 
+	glVertex3f(-15,-2.5, -485); //8+72=80,
+	//glTexCoord2f(0.0, 1.0); 
+	glVertex3f(15,-2.5, -485);
+	//glTexCoord2f(1.0, 1.0); 
+	glVertex3f(15,-2.5, 500 );//-8+72
+	//glTexCoord2f(1.0, 0.0); 
+	glVertex3f(-15,-2.5,500);
 	glEnd();
 
 	glFlush();
@@ -1155,6 +1193,7 @@ if(carSelect){
     
     //The timerFunc is set to redisplay every 5ms
     
+
 	glutSwapBuffers();
     glutTimerFunc(20,timer,0);
     }
