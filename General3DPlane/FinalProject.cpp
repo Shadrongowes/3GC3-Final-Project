@@ -38,6 +38,8 @@ bool moving = true;
 bool gameComplete = false;
 bool winner = false;
 int count = 0;
+int trafficTimer = 0;
+int traffic = 0;
 
 
 float xrot = 10;
@@ -1210,6 +1212,8 @@ void gameCheck(){
     
     if ((myCar.location.z<-482.3) ||(cars[2].location.z<(-482.3-30)) ){
         gameComplete = true;
+
+		trafficTimer = 0;
         
         if (myCar.location.z<cars[2].location.z+30) {
             winner = true;
@@ -1219,7 +1223,7 @@ void gameCheck(){
             
             winner = false;
          
-             printf("%s","you loose");
+          
             
         }
         
@@ -1362,7 +1366,20 @@ if(carSelect){
     else{
         
 
-       
+    trafficTimer++;   
+
+	if (trafficTimer < 100) {
+		traffic = 0;
+	}
+	if (100 <= trafficTimer < 200) {
+		traffic = 1;
+	}
+	if (200 <= trafficTimer < 300) {
+		traffic = 2;
+	}
+	else {
+		traffic = 3;
+	}
         
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(135/255., 206/255., 250/255., 1);
@@ -1429,11 +1446,23 @@ if(carSelect){
         opponentCar();
         
         drawEnvironment();
-       
+       printf("%d",traffic);
         
         glPushMatrix();
 		glTranslatef(0.0, 5.0, -2.5);
-		drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
+		if (traffic == 0) {
+			drawTrafficLight(2, blackPlastic.emission, blackPlastic.emission, blackPlastic.emission);
+			
+		}
+		else if (traffic == 1) {
+			drawTrafficLight(2, redLight_emissive, blackPlastic.emission, blackPlastic.emission);
+		}
+		else if (traffic == 2) {
+			drawTrafficLight(2, redLight_emissive, orangeLight_emissive, blackPlastic.emission);
+		}
+		else {
+			drawTrafficLight(2, redLight_emissive, orangeLight_emissive, greenLight_emissive);
+		}
         glPopMatrix();
     }
     
@@ -1444,7 +1473,7 @@ if(carSelect){
 
 	glutSwapBuffers();
     glutTimerFunc(5,timer,0);
-         printf("%f,\n%f",cars[2].location.z,myCar.location.z);
+        
     }
     
     
