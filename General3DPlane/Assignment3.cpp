@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glut.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-//#include <GLUT/glut.h>
-//#include <OpenGL/OpenGL.h>
+//#include <GL/glut.h>
+//#include <GL/glu.h>
+//#include <GL/gl.h>
+#include <GLUT/glut.h>
+#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -50,23 +50,10 @@ ray mouseRay;
 static GLubyte checkImage[checkImageHeight][checkImageWidth][4];
 
 
-static GLuint texName;
+GLuint texture;
 
-void makeCheckImage(void)
-{
-   int i, j, c;
-    
-   for (i = 0; i < checkImageHeight; i++) {
-      for (j = 0; j < checkImageWidth; j++) {
-         c = ((((i&0x8)==0)^((j&0x8))==0))*255;//   c = ((((i&0x8)==0)^((j&0x8))==0))*255;
-         checkImage[i][j][0] = (GLubyte) c;
-         checkImage[i][j][1] = (GLubyte) c;
-         checkImage[i][j][2] = (GLubyte) c;
-         checkImage[i][j][3] = (GLubyte) 255;
-      }
-   }
-}
-
+// allocate a texture name
+glGenTextures( 1, &texture );
 
 
 
