@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glut.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-//#include <GLUT/glut.h>
-//#include <OpenGL/OpenGL.h>
+//#include <GL/glut.h>
+//#include <GL/glu.h>
+//#include <GL/gl.h>
+#include <GLUT/glut.h>
+#include <OpenGL/OpenGL.h>
 #include "3DMathLib.h"
 #include <math.h>
 #include <iostream>
@@ -84,52 +84,52 @@ void makeCheckImage(void)
 
 //TextureLoader from wikibooks.org
 
-GLuint raw_texture_load(const char *filename, int width, int height)
-{
-    GLuint texture;
-    unsigned char *data;
-    FILE *file;
-    
-    // open texture data
-    file = fopen(filename, "rb");
-    if (file == NULL) return 0;
-    
-    // allocate buffer
-    data = (unsigned char*) malloc(width * height * 4);
-    
-    // read texture data
-    fread(data, width * height * 4, 1, file);
-    fclose(file);
-    
-    // allocate a texture name
-    glGenTextures(1, &texture);
-    
-    // select our current texture
-    glBindTexture(GL_TEXTURE_2D, texture);
-    
-    // select modulate to mix texture with color for shading
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-    
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_DECAL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_DECAL);
-    
-    // when texture area is small, bilinear filter the closest mipmap
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-    // when texture area is large, bilinear filter the first mipmap
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    // texture should tile
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    
-    // build our texture mipmaps
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
-    
-    // free buffer
-    free(data);
-    
-    return texture;
-}
+//GLuint raw_texture_load(const char *filename, int width, int height)
+//{
+//    GLuint texture;
+//    unsigned char *data;
+//    FILE *file;
+//    
+//    // open texture data
+//    file = fopen(filename, "rb");
+//    if (file == NULL) return 0;
+//    
+//    // allocate buffer
+//    data = (unsigned char*) malloc(width * height * 4);
+//    
+//    // read texture data
+//    fread(data, width * height * 4, 1, file);
+//    fclose(file);
+//    
+//    // allocate a texture name
+//    glGenTextures(1, &texture);
+//    
+//    // select our current texture
+//    glBindTexture(GL_TEXTURE_2D, texture);
+//    
+//    // select modulate to mix texture with color for shading
+//    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+//    
+//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_DECAL);
+//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_DECAL);
+//    
+//    // when texture area is small, bilinear filter the closest mipmap
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+//    // when texture area is large, bilinear filter the first mipmap
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//    
+//    // texture should tile
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//    
+//    // build our texture mipmaps
+//    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+//    
+//    // free buffer
+//    free(data);
+//    
+//    return texture;
+//}
 
 
 
@@ -595,7 +595,7 @@ void init(void)
     
     //load texture
     
-    texture = raw_texture_load("road.raw", 256, 256);
+   // texture = raw_texture_load("road.raw", 256, 256);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45, 1, 1, 500);
@@ -715,7 +715,7 @@ vec3D GetOGLPos(int x, int y)
 
 
 
-
+void moveCars(){}
 
 
 
@@ -987,14 +987,10 @@ void createCars(){
 
 
 //The timerFunc is set to redisplay every 5ms
-void drawRoom(){
+void drawEnvironment(){
     setMaterial('w');
     
-    glEnable(GL_TEXTURE_2D);
     
-	glBindTexture(GL_TEXTURE_2D, texture);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glBegin(GL_QUADS);
     
     glNormal3f(0, 1, 0); //set the normal for stage lighting
@@ -1006,6 +1002,38 @@ void drawRoom(){
     
     glEnd();
     glDisable(GL_TEXTURE_2D);
+    glEnable(GL_TEXTURE_2D);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	glBindTexture(GL_TEXTURE_2D, texName);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0); glVertex3f(-15,-2.5, -500); //8+72=80,
+	glTexCoord2f(0.0, 1.0); glVertex3f(15,-2.5, -500);
+	glTexCoord2f(1.0, 1.0); glVertex3f(15,-2.5, -485 );//-8+72
+	glTexCoord2f(1.0, 0.0); glVertex3f(-15,-2.5,-485);
+    
+	/*glTexCoord2f(0.0, 0.0); glVertex4f(1.0, -1.0, 0.0);
+     glTexCoord2f(0.0, 1.0); glVertex4f(1.0, 1.0, 0.0);
+     glTexCoord2f(1.0, 1.0); glVertex4f(2.41421, 1.0, -1.41421);
+     glTexCoord2f(1.0, 0.0); glVertex4f(2.41421, -1.0, -1.41421);*/
+	glEnd();
+    
+    
+    
+	//glBindTexture(GL_TEXTURE_2D, texture name goes here);
+	glBegin(GL_QUADS);
+	//glTexCoord2f(0.0, 0.0);
+	glVertex3f(-15,-2.5, -485); //8+72=80,
+	//glTexCoord2f(0.0, 1.0);
+	glVertex3f(15,-2.5, -485);
+	//glTexCoord2f(1.0, 1.0);
+	glVertex3f(15,-2.5, 500 );//-8+72
+	//glTexCoord2f(1.0, 0.0);
+	glVertex3f(-15,-2.5,500);
+	glEnd();
+    
+	glFlush();
+	glDisable(GL_TEXTURE_2D);
+    //-----------------------------------------------------------
     
 }
 
@@ -1077,36 +1105,7 @@ if(carSelect){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(1, 1, 1, 1);
 	//---------------------------------------------
-	glEnable(GL_TEXTURE_2D);
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-	glBindTexture(GL_TEXTURE_2D, texName);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0.0, 0.0); glVertex3f(-15,-2.5, -500); //8+72=80,
-	glTexCoord2f(0.0, 1.0); glVertex3f(15,-2.5, -500);
-	glTexCoord2f(1.0, 1.0); glVertex3f(15,-2.5, -485 );//-8+72
-	glTexCoord2f(1.0, 0.0); glVertex3f(-15,-2.5,-485);
-
-	/*glTexCoord2f(0.0, 0.0); glVertex4f(1.0, -1.0, 0.0);
-	glTexCoord2f(0.0, 1.0); glVertex4f(1.0, 1.0, 0.0);
-	glTexCoord2f(1.0, 1.0); glVertex4f(2.41421, 1.0, -1.41421);
-	glTexCoord2f(1.0, 0.0); glVertex4f(2.41421, -1.0, -1.41421);*/
-	glEnd();
-
-	//glBindTexture(GL_TEXTURE_2D, texture name goes here);
-	glBegin(GL_QUADS);
-	//glTexCoord2f(0.0, 0.0); 
-	glVertex3f(-15,-2.5, -485); //8+72=80,
-	//glTexCoord2f(0.0, 1.0); 
-	glVertex3f(15,-2.5, -485);
-	//glTexCoord2f(1.0, 1.0); 
-	glVertex3f(15,-2.5, 500 );//-8+72
-	//glTexCoord2f(1.0, 0.0); 
-	glVertex3f(-15,-2.5,500);
-	glEnd();
-
-	glFlush();
-	glDisable(GL_TEXTURE_2D);
-   //-----------------------------------------------------------
+	
 
 
     glMatrixMode(GL_MODELVIEW);
@@ -1115,7 +1114,7 @@ if(carSelect){
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
     glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
     
-    drawRoom();
+    drawEnvironment();
     
     glutKeyboardFunc(keyboard);
     
