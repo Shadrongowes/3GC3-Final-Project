@@ -442,7 +442,7 @@ void drawBitmapText(char *string, float x, float y, float z)
 
     for (c=string; *c != '\0'; c++)
     {
-        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, *c);
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
     }
 }
 
@@ -1149,7 +1149,7 @@ if(carSelect){
         //Used to switch the current targets shape a switch command was used to be able to easily change
         //Shapes
 		glPushMatrix();
-        glScalef(1,1,1);
+        //glutBitmapCharacter(font, c);
         drawBitmapText("Hello world",0,10,0);
 		glPopMatrix();
 
