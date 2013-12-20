@@ -222,27 +222,27 @@ void timer(int id){
 
 
 
-void translateFunction(float x, float y, float z){
+object translateFunction(object vehicle,float x, float y, float z){
     
-    for(int i = 0;i<cars.size();i++){
-        if(cars[i].selected){
+   
+     
             
             vec3D trans(x,y,z);
             
-            cars[i].location = cars[i].location.shift(trans);
+            vehicle.location = vehicle.location.shift(trans);
             
             
             //shift all bounding boxes
-            cars[i].box.left.origin =  cars[i].box.left.origin.shift(trans);
-            cars[i].box.right.origin = cars[i].box.right.origin.shift(trans);
-            cars[i].box.top.origin =  cars[i].box.top.origin.shift(trans);
-            cars[i].box.bottom.origin = cars[i].box.bottom.origin.shift(trans);
-            cars[i].box.back.origin = cars[i].box.back.origin.shift(trans);
-            cars[i].box.front.origin = cars[i].box.front.origin.shift(trans);
+            vehicle.box.left.origin =  vehicle.box.left.origin.shift(trans);
+            vehicle.box.right.origin = vehicle.box.right.origin.shift(trans);
+            vehicle.box.top.origin =  vehicle.box.top.origin.shift(trans);
+            vehicle.box.bottom.origin = vehicle.box.bottom.origin.shift(trans);
+            vehicle.box.back.origin = vehicle.box.back.origin.shift(trans);
+            vehicle.box.front.origin = vehicle.box.front.origin.shift(trans);
             
-      
-        }
-    }
+    return vehicle;
+    
+    
     
     
 }
@@ -361,32 +361,32 @@ void keyboard(unsigned char key, int x, int y)
     else if(key=='x'){
         
         if(mod == GLUT_ACTIVE_ALT){
-            translateFunction(-1.0f, 0, 0);
+           
         }
         
         else{
-            translateFunction(1, 0, 0);
+          
         }
     }
         else if(key == 'y'){
             
             if(mod == GLUT_ACTIVE_ALT){
-                translateFunction(0, -1.0, 0);
+              
             }
             
             else{
-                translateFunction(0, 1, 0);
+              
             }
         }
 
         else if(key == 'z'){
             
             if(mod == GLUT_ACTIVE_ALT){
-                translateFunction(0, 0, -1);
+                
             }
             
             else{
-                translateFunction(0, 0, 1);
+               
             }
         }
         else if(key == 'i'){
@@ -935,172 +935,99 @@ void isSelected(){
 
 void createCars(){
     
-    object newObj = createObject();
+    object newObj(origin, currentItem, 1,1,1, 'b',standardBox(), false);
     cars.push_back(newObj);
+    cars[0] = translateFunction(cars[0], -10, 0,0);
+    
+    object newObj2(origin, currentItem, 1,1,1, 'b',standardBox(), false);
+    cars.push_back(newObj2);
+   cars[1] = translateFunction(cars[1], 10, 0,0);
+    
+    object newObj3(origin, currentItem, 1,1,1, 'b',standardBox(), false);
+    cars.push_back(newObj3);
+  
 }
 
-void openingScreen(void){
-   
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0, 0, 0, 0);
-	//---------------------------------------------
-	glEnable(GL_TEXTURE_2D);
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-	glBindTexture(GL_TEXTURE_2D, texName);
-	glDisable(GL_TEXTURE_2D);
-    //-----------------------------------------------------------
-    carRotation++;
+
+        
+        
+
+
+//The timerFunc is set to redisplay every 5ms
+
+
+
+
     
-    glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
-    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-    glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
+
+
+
+
+void display(void){
     
-   
-    
-    glutKeyboardFunc(keyboard);
-    
-    glPushMatrix();
-    
-    glPushMatrix();
-    glTranslatef(10,0,0);
-    glRotatef(carRotation, 0, 1, 0);
-    glutSolidCube(2);
-    glPopMatrix();
-    
-    
-    glPushMatrix();
-    glTranslatef(-10,0,0);
-    glRotatef(carRotation, 0, 1, 0);
-    glutSolidCube(2);
-    glPopMatrix();
-    
-    
-    glPushMatrix();
-    glTranslatef(0,0,0);
-    glRotatef(carRotation, 0, 1, 0);
-    glutSolidCube(2);
-    glPopMatrix();
-  
-    glPopMatrix();
-    
-    
-    
-    for(int i = 0; i<cars.size();i++){
-        glPushMatrix();
-        glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
-        glPushMatrix();
-        glScalef(cars[i].scaleX,cars[i].scaleY,cars[i].scaleZ);
+if(carSelect){
+        
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0, 0, 0, 0);
+        //---------------------------------------------
+        glEnable(GL_TEXTURE_2D);
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+        glBindTexture(GL_TEXTURE_2D, texName);
+        glDisable(GL_TEXTURE_2D);
+        //-----------------------------------------------------------
+        carRotation++;
+        
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        gluLookAt(camPos[0], camPos[1], camPos[2], 0,0,0, 0,1,0);
+        glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+        glLightfv(GL_LIGHT1,GL_POSITION,light_pos1);
         
         
         
-        if(cars[i].selected){
-            setMaterial('w');
-            glutWireCube(cars[i].scaleX*2);
-            cars[i].shape = currentItem;
-            setMaterial(currentMaterial);
-            cars[i].material = currentMaterial;
-            
-        }
-        else{
-            setMaterial(cars[i].material);
-            
+        glutKeyboardFunc(keyboard);
+        
+        if (cars.size()==0){
+            createCars();
         }
         
-        
+        for(int i = 0; i<cars.size();i++){
+            glPushMatrix();
+            glTranslatef(cars[i].location.x,cars[i].location.y , cars[i].location.z);
+            glRotatef(carRotation, 0, 1, 0);
+            glutSolidCube(1);
+            
+            
+            
+            
+            if(cars[i].selected){
+                glutWireCube(cars[i].scaleX*2);
+                
+            }
+            else{
+                setMaterial(cars[i].material);
+                
+            }
+            glPopMatrix();
+            
+        }
         
         
         //Used to switch the current targets shape a switch command was used to be able to easily change
         //Shapes
         
         
-        
-        if(cars[i].selected){
-            
-            
-            
-            switch(currentItem)
-            {
-                case 'c':
-                    glutSolidCube(cars[i].scaleX);
-                    
-                    break;
-                    
-                case 's':
-                    glutSolidSphere(cars[i].scaleX/2,20,20);
-                    break;
-                    
-                case 't':
-                    glutSolidTeapot(cars[i].scaleX);
-                    break;
-                    
-                case 'o':
-                    glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
-                    break;
-                    
-                case 'y':
-                    glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
-                    
-                    break;
-                    
-                    
-            }
-            
-            
-        }
-        
-        else{
-            switch(cars[i].shape)
-            {
-                case 'c':
-                    glutSolidCube(cars[i].scaleX);
-                    break;
-                    
-                case 's':
-                    glutSolidSphere(cars[i].scaleX/2,20,20);
-                    break;
-                    
-                case 't':
-                    glutSolidTeapot(cars[i].scaleX);
-                    break;
-                    
-                case 'o':
-                    glutSolidCone(cars[i].scaleX, cars[i].scaleX, 12, 12);
-                    break;
-                    
-                case 'y':
-                    glutSolidTorus(cars[i].scaleX/2, cars[i].scaleX, 10, 12);
-                    break;
-                    
-                    
-            }
-            
-        }
+        glutSwapBuffers();
+        glutTimerFunc(20,timer,0);
         
         
         
-        glPopMatrix();
-        glPopMatrix();
+        
+        
+        
     }
     
-    
-    
-    
-    
-    
-    
-    //The timerFunc is set to redisplay every 5ms
-    
-	glutSwapBuffers();
-    glutTimerFunc(20,timer,0);
-    
-    
-}
-
-
-
-void display(void){
+    else{
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//---------------------------------------------
@@ -1240,7 +1167,7 @@ void display(void){
     
 	glutSwapBuffers();
     glutTimerFunc(20,timer,0);
-    
+    }
     
 }
 
@@ -1280,12 +1207,12 @@ int main(int argc, char** argv)
  
 
     
-    if(carSelect){
-        glutDisplayFunc(openingScreen);	//registers "display" as the display callback function
-    }
-    else{
-	glutDisplayFunc(display);	//registers "display" as the display callback function
-	}
+    
+    glutDisplayFunc(display);	//registers "display" as the display callback function
+    
+    
+	
+	
 
     glutIdleFunc(idle);
     
